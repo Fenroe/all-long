@@ -24,8 +24,8 @@ const GameBoard = () => {
         })
 
         const interval = setInterval(() => {
-            state.activePieceTiles = movePieceDown()
-        }, 1000)
+            if (!snap.gamePaused) state.activePieceTiles = movePieceDown()
+        }, 100)
 
         
 
@@ -44,7 +44,7 @@ const GameBoard = () => {
 
             clearInterval(interval)
         }
-    }, [])
+    }, [snap])
 
     return (
         <div>

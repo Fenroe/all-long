@@ -6,9 +6,16 @@ const movePieceDown = () => {
         if (coordinate + 10 >= 180) {
             isValidMove = false
         }
+        if (state.occupiedTiles.includes(coordinate + 10)) {
+            isValidMove = false
+        }
     })
     if (!isValidMove) {
-        return state.activePieceTiles
+        state.activePieceTiles.forEach((coordinate) => {
+            console.log(coordinate)
+            state.occupiedTiles.push(coordinate)
+        })
+        state.activePieceTiles = state.nextPieceTiles
     }
     const newArray: number[] = []
     state.activePieceTiles.forEach((coordinate) => {

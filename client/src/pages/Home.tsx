@@ -6,7 +6,9 @@ const Home = () => {
   const snap = useSnapshot(state)
 
   return (
-    <div>{snap.text}</div>
+    <div>
+      <button onClick={() => state.gamePaused = !snap.gamePaused}>{snap.gamePaused ? 'Play' : 'Pause' }</button>
+    </div>
   )
 }
 
