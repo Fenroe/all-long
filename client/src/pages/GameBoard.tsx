@@ -23,14 +23,29 @@ const GameBoard = () => {
             }
         })
 
+        const interval = setInterval(() => {
+            state.activePieceTiles = movePieceDown()
+        }, 1000)
+
+        
+
         return () => {
             document.removeEventListener('keydown', (evt) => {
                 if (evt.key === 'ArrowDown') {
                     state.activePieceTiles = movePieceDown()
                 }
+                if (evt.key === 'ArrowLeft') {
+                    state.activePieceTiles = movePieceLeft()
+                }
+                if (evt.key === 'ArrowRight') {
+                    state.activePieceTiles = movePieceRight()
+                }
             })
+
+            clearInterval(interval)
         }
     }, [])
+
     return (
         <div>
             {getArrayFromNumber(rows).map((row) =>
