@@ -1,8 +1,11 @@
-import React from 'react'
+import { useSnapshot } from "valtio"
+import state from "../state"
 
-const Tile = () => {
+const Tile = ({ id }: {id: number }) => {
+  const snap = useSnapshot(state)
+
   return (
-    <div>Tile</div>
+    <div className="w-8 h-8 bg-blue-100" style={snap.activePieceTiles.includes(id) ? { backgroundColor: '#fff' } : {}}></div>
   )
 }
 

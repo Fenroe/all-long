@@ -1,9 +1,17 @@
 import { proxy } from 'valtio'
 
-const state = proxy({
+interface stateInterface {
+    rows: number;
+    tilesPerRow: number;
+    text: string;
+    activePieceTiles: number[];
+
+}
+const state: stateInterface = proxy({
     rows: 18,
     tilesPerRow: 10,
-    text: 'Hello'
+    text: 'Hello',
+    activePieceTiles: [3, 4, 14, 15]
 });
 
 export default state;

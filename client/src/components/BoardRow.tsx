@@ -1,16 +1,16 @@
-import React from 'react'
 import Tile from './Tile'
-import { useSnapshot } from 'valtio'
-import state from '../state'
 import { getArrayFromNumber } from '../utilities'
 
-const BoardRow = () => {
-    const snap = useSnapshot(state)
+const BoardRow = ({ rowId }: {rowId: number }) => {
+    const tilesPerRow = 10
 
     return (
-        <div>
-            {getArrayFromNumber(snap.tilesPerRow).map((tile) =>
-            <Tile key={tile}/>)}
+        <div className="flex flex-row">
+            {getArrayFromNumber(tilesPerRow).map((tile) =>
+            <Tile
+            key={tile}
+            id={+`${rowId}${tile}`}
+            />)}
         </div>
     )
 }
