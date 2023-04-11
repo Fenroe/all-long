@@ -1,11 +1,19 @@
 import getArrayFromNumber from "./getArrayFromNumber";
-import movePieceDown from "./movePieceDown";
-import movePieceLeft from "./movePieceLeft";
-import movePieceRight from "./movePieceRight";
+import rotateCross from "./rotateCross";
+import rotateL from "./rotateL";
+import rotateReverseL from "./rotateReverseL";
+import rotateLong from "./rotateLong";
+import rotateZig from "./rotateZig";
+import rotateReverseZig from "./rotateReverseZig";
+import { pieceOrientationArray } from "./constants";
 
 export {
     getArrayFromNumber,
-    movePieceDown,
-    movePieceLeft,
-    movePieceRight
+    rotateCross,
+    rotateL,
+    rotateReverseL,
+    rotateLong,
+    rotateZig,
+    rotateReverseZig,
+    pieceOrientationArray,
 }

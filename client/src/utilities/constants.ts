@@ -7,3 +7,10 @@ const defaultPiecePositions = {
     zigZag: [3, 4, 14, 15],
     reverseZigZag: [5, 4, 14, 13],
 }
+
+const pieceOrientationArray: Array<'spawn' | 'upright' | 'reverse spawn' | 'reverse upright'> = ['spawn', 'upright', 'reverse spawn', 'reverse upright']
+
+export {
+    defaultPiecePositions,
+    pieceOrientationArray,
+}
