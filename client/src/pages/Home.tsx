@@ -1,14 +1,19 @@
-import React from 'react'
 import { useSnapshot } from 'valtio'
 import state from '../state' 
 
 const Home = () => {
   const snap = useSnapshot(state)
 
+  const startGame = () => {
+    state.intro = false
+    state.score = 0
+  }
+
   return (
-    <div>
-      <button onClick={() => state.gamePaused = !snap.gamePaused}>{snap.gamePaused ? 'Play' : 'Pause' }</button>
-    </div>
+    <main>
+      <h1>Tetris</h1>
+      <button onClick={startGame}>Start</button>
+    </main>
   )
 }
 

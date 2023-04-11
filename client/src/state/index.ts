@@ -10,6 +10,9 @@ interface stateInterface {
     nextPieceTiles: number[];
     pieceOrientation: 'spawn' | 'upright' | 'reverse spawn' | 'reverse upright';
     pieceType: string;
+    intro: boolean;
+    outro: boolean;
+    score: number;
 
 }
 const state: stateInterface = proxy({
@@ -22,32 +25,9 @@ const state: stateInterface = proxy({
     nextPieceTiles: [14, 24, 13, 3],
     pieceOrientation: 'spawn',
     pieceType: 'L',
+    intro: true,
+    outro: false,
+    score: 0,
 })
 
-// [14, 15, 23, 24]
-// [3, 13, 14, 24]
-
 export default state;
-
-/*
-keep track of what piece orientation should be 
-spawn
-upright
-reverse spawn
-reverse upright
-
-which pieces have all four, which have less?
-
-4
-L
-reverse L
-cross
-
-2
-long
-zigzag
-reverse zigzag
-
-1
-square
-*/

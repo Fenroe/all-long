@@ -1,10 +1,10 @@
-import { GameBoard, Home } from './pages'
+import { Game, Home } from './pages'
 
 function App() {
   return (
     <div className="App">
-      <GameBoard />
       <Home />
+      <Game />
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { BoardRow } from '../components'
+import BoardRow from './BoardRow'
 import { getArrayFromNumber, rotateCross, rotateL, rotateReverseL, rotateLong, rotateZig, rotateReverseZig, pieceOrientationArray } from '../utilities'
 import { useSnapshot } from 'valtio'
 import state from '../state'
@@ -87,7 +87,6 @@ const GameBoard = () => {
                 newCoordinates = rotateCross(snap.activePieceTiles, snap.pieceOrientation)
                 break;
             case 'L':
-                console.log('LLL')
                 newCoordinates = rotateL(snap.activePieceTiles, snap.pieceOrientation)
                 break;
             case 'reverse L':
@@ -113,9 +112,7 @@ const GameBoard = () => {
         if (isValidMove) {
             state.activePieceTiles = newCoordinates
             const indexOfOrientation = pieceOrientationArray.indexOf(snap.pieceOrientation)
-            console.log({ index: indexOfOrientation, length: pieceOrientationArray.length })
             state.pieceOrientation = indexOfOrientation === pieceOrientationArray.length - 1 ? pieceOrientationArray[0] : pieceOrientationArray[indexOfOrientation + 1]
-            console.log(state.pieceOrientation)
         }
     }
 
