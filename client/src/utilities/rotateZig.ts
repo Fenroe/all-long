@@ -10,7 +10,7 @@ const rotateZig = (currentPosition: readonly number[], currentOrientation: 'spaw
         return [firstCoordinate, secondCoordinate, thirdCoordinate, finalCoordinate]
     }
     if (currentOrientation === 'upright' || currentOrientation === 'reverse upright') {
-        const firstCoordinate = currentPositionCopy[0] - 8
+        const firstCoordinate = currentPositionCopy[0] + 8
         const secondCoordinate = currentPositionCopy[1]
         const thirdCoordinate = currentPositionCopy[3]
         const finalCoordinate = currentPositionCopy[2] + 10

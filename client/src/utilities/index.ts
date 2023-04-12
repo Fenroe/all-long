@@ -6,6 +6,7 @@ import rotateLong from "./rotateLong";
 import rotateZig from "./rotateZig";
 import rotateReverseZig from "./rotateReverseZig";
 import { pieceOrientationArray } from "./constants";
+import getRandomPiece from "./getRandomPiece";
 
 export {
     getArrayFromNumber,
@@ -16,4 +17,5 @@ export {
     rotateZig,
     rotateReverseZig,
     pieceOrientationArray,
+    getRandomPiece,
 }

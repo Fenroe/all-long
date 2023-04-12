@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import BoardRow from './BoardRow'
-import { getArrayFromNumber, rotateCross, rotateL, rotateReverseL, rotateLong, rotateZig, rotateReverseZig, pieceOrientationArray } from '../utilities'
+import { getArrayFromNumber, rotateCross, rotateL, rotateReverseL, rotateLong, rotateZig, rotateReverseZig, pieceOrientationArray, getRandomPiece } from '../utilities'
 import { useSnapshot } from 'valtio'
 import state from '../state'
 
@@ -22,12 +22,16 @@ const GameBoard = () => {
         })
         if (!isValidMove) {
             snap.activePieceTiles.forEach((coordinate) => {
-                console.log(coordinate)
                 state.occupiedTiles.push(coordinate)
             })
             const nextPieceTilesArray: number[] = []
             snap.nextPieceTiles.forEach((coordinate) => nextPieceTilesArray.push(coordinate))
             state.activePieceTiles = nextPieceTilesArray
+            state.pieceType = snap.nextPieceType
+            const newPiece = getRandomPiece()
+            state.nextPieceTiles = newPiece.defaultPosition
+            state.nextPieceType = newPiece.name
+            state.pieceOrientation = 'spawn'
         }
         const newArray: number[] = []
         state.activePieceTiles.forEach((coordinate) => {
@@ -42,7 +46,7 @@ const GameBoard = () => {
             if (coordinate % 10 === 0) {
                 isValidMove = false
             }
-            if (snap.occupiedTiles.includes(coordinate)) {
+            if (snap.occupiedTiles.includes(coordinate - 1)) {
                 isValidMove = false
             }
         })
@@ -64,7 +68,7 @@ const GameBoard = () => {
             if (coordinate % 10 === 9) {
                 isValidMove = false
             }
-            if (snap.occupiedTiles.includes(coordinate)) {
+            if (snap.occupiedTiles.includes(coordinate + 1)) {
                 isValidMove = false
             }
         })
@@ -108,6 +112,8 @@ const GameBoard = () => {
         newCoordinates.forEach((coordinate) => {
             if (coordinate > 180) isValidMove = false
             if (snap.occupiedTiles.includes(coordinate)) isValidMove = false
+            if (coordinate % 10 === 9 && newCoordinates.filter((number) => number === coordinate + 1).length > 0) isValidMove = false
+            if (coordinate % 10 === 0 && newCoordinates.filter((number) => number === coordinate - 1).length > 0) isValidMove = false
         })
         if (isValidMove) {
             state.activePieceTiles = newCoordinates

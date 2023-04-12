@@ -1,6 +1,13 @@
+import GameBoard from "../components/GameBoard"
+import { useSnapshot } from "valtio"
+import state from "../state"
+
 const Game = () => {
+  const snap = useSnapshot(state)
+
   return (
-    <div>Game</div>
+    !snap.intro &&
+    <GameBoard />
   )
 }
 

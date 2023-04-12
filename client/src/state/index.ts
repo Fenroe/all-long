@@ -13,6 +13,8 @@ interface stateInterface {
     intro: boolean;
     outro: boolean;
     score: number;
+    nextPieceType: string;
+    lines: number;
 
 }
 const state: stateInterface = proxy({
@@ -28,6 +30,8 @@ const state: stateInterface = proxy({
     intro: true,
     outro: false,
     score: 0,
+    nextPieceType: '',
+    lines: 0,
 })
 
 export default state;
