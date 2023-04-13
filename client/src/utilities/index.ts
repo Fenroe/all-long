@@ -7,6 +7,13 @@ import rotateZig from "./rotateZig";
 import rotateReverseZig from "./rotateReverseZig";
 import { pieceOrientationArray } from "./constants";
 import getRandomPiece from "./getRandomPiece";
+import { adjustOccupiedTiles } from "./adjustOccupiedTiles";
+import { checkForCompletedRows } from "./checkForCompletedRows";
+import { combineCompletedRows } from "./combineCompletedRows";
+import { removeCompletedRows } from "./removeCompletedRows";
+import { getMutableArray } from "./getMutableArray";
+import { getLineScore } from "./getLineScore";
+import { getLevel } from "./getLevel";
 
 export {
     getArrayFromNumber,
@@ -18,4 +25,11 @@ export {
     rotateReverseZig,
     pieceOrientationArray,
     getRandomPiece,
+    adjustOccupiedTiles,
+    checkForCompletedRows,
+    combineCompletedRows,
+    removeCompletedRows,
+    getMutableArray,
+    getLineScore,
+    getLevel,
 }

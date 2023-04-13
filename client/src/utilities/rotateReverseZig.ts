@@ -14,7 +14,6 @@ const rotateReverseZig = (currentPosition: readonly number[], currentOrientation
         const secondCoordinate = currentPositionCopy[1] + 10
         const thirdCoordinate = currentPositionCopy[2]
         const finalCoordinate = currentPositionCopy[3]
-        console.log(firstCoordinate, secondCoordinate, thirdCoordinate, finalCoordinate)
         return [firstCoordinate, secondCoordinate, thirdCoordinate, finalCoordinate]
     }
     return [1, 2, 3, 4]

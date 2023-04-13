@@ -18,7 +18,6 @@ const Home = () => {
   }
 
   return (
-    snap.intro &&
     <main>
       <h1>Tetris</h1>
       <button onClick={startGame}>Start</button>

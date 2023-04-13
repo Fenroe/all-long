@@ -1,9 +1,6 @@
 import { proxy } from 'valtio'
 
 interface stateInterface {
-    rows: number;
-    tilesPerRow: number;
-    text: string;
     activePieceTiles: number[];
     gamePaused: boolean;
     occupiedTiles: number[];
@@ -15,14 +12,12 @@ interface stateInterface {
     score: number;
     nextPieceType: string;
     lines: number;
+    dropPoints: number;
 
 }
 const state: stateInterface = proxy({
-    rows: 18,
-    tilesPerRow: 10,
-    text: 'Hello',
     activePieceTiles: [3, 4, 5, 13],
-    gamePaused: true,
+    gamePaused: false,
     occupiedTiles: [],
     nextPieceTiles: [14, 24, 13, 3],
     pieceOrientation: 'spawn',
@@ -32,6 +27,7 @@ const state: stateInterface = proxy({
     score: 0,
     nextPieceType: '',
     lines: 0,
+    dropPoints: 0,
 })
 
 export default state;

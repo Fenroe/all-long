@@ -8,7 +8,7 @@ const Tile = ({ id }: {id: number }) => {
     return snap.activePieceTiles.includes(id) || snap.occupiedTiles.includes(id)
   }
   return (
-    <div className="w-8 h-8 bg-blue-100" style={checkForColour() ? { backgroundColor: '#fff' } : {}}></div>
+    <div className="w-8 h-8 bg-blue-100" style={checkForColour() ? { backgroundColor: '#fff', border: '1px solid gray', borderBottom: 'none' } : {}}></div>
   )
 }
 
