@@ -1,19 +1,43 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import BoardRow from './BoardRow'
 import {
     getArrayFromNumber, rotateCross, rotateL, rotateReverseL,
     rotateLong, rotateZig, rotateReverseZig, pieceOrientationArray,
     getRandomPiece, adjustOccupiedTiles, checkForCompletedRows,
-    combineCompletedRows, removeCompletedRows, getMutableArray, getLineScore
+    combineCompletedRows, removeCompletedRows, getMutableArray, getLineScore,
+    getGravity,
 } from '../utilities'
 import { useSnapshot } from 'valtio'
 import state from '../state'
 
 // 10 wide x 18 tall
 const GameBoard = () => {
+    const requestRef = useRef(0)
+
+    const lastUpdateTimeRef = useRef(0)
+
+    const progressTimeRef = useRef(0)
+
     const snap = useSnapshot(state)
 
     const rows: number = 18
+
+    const update = (time: number) => {
+        requestRef.current = requestAnimationFrame(update)
+        if (snap.gamePaused) {
+            return
+        }
+        if (!lastUpdateTimeRef.current) {
+            lastUpdateTimeRef.current = time
+        }
+        const deltaTime = time - lastUpdateTimeRef.current
+        progressTimeRef.current += deltaTime
+        if (progressTimeRef.current > 500 / getGravity(snap.lines)) {
+            movePieceDown()
+            progressTimeRef.current = 0
+        } 
+        lastUpdateTimeRef.current = time
+    } 
 
     const spawnNewPiece = (occupiedTiles?: number[]) => {
         const occupiedTileReference = occupiedTiles ? occupiedTiles : getMutableArray(snap.occupiedTiles)
@@ -75,13 +99,13 @@ const GameBoard = () => {
         let hardDropPoints = 0
         let isValidMove = true
         while (isValidMove) {
-            piecePosition = piecePosition.map((coordinate) => coordinate + 10)
             piecePosition.forEach((coordinate) => {
                 if (snap.occupiedTiles.includes(coordinate + 10) || coordinate >= 170) {
                     isValidMove = false
                 }
             })
             if (isValidMove) {
+                piecePosition = piecePosition.map((coordinate) => coordinate + 10)
                 hardDropPoints += 2
             }
         }
@@ -198,17 +222,14 @@ const GameBoard = () => {
         // Don't pass handleKeyPress in an arrow function as it won't be logically equal to the function you try to remove later
         document.addEventListener('keydown', handleKeyPress)
 
-        const interval = setInterval(() => {
-            movePieceDown()
-        }, 500)
-
-        
-
         return () => {
             document.removeEventListener('keydown', handleKeyPress)
-
-            clearInterval(interval)  
         }
+    }, [snap])
+
+    useEffect(() => {
+        requestRef.current = requestAnimationFrame(update)
+        return () => cancelAnimationFrame(requestRef.current)
     }, [snap])
 
     return (

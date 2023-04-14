@@ -18,9 +18,11 @@ const Home = () => {
   }
 
   return (
-    <main>
-      <h1>Tetris</h1>
-      <button onClick={startGame}>Start</button>
+    <main className="w-full h-full">
+      <div className="w-full flex flex-col justify-center items-center home-play-container">
+        <h1 className="text-7xl">Blocks</h1>
+        <button className="w-36 h-12 border-black border rounded-lg text-2xl" onClick={startGame}>Play</button>
+      </div>
     </main>
   )
 }

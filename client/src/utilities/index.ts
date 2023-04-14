@@ -14,6 +14,7 @@ import { removeCompletedRows } from "./removeCompletedRows";
 import { getMutableArray } from "./getMutableArray";
 import { getLineScore } from "./getLineScore";
 import { getLevel } from "./getLevel";
+import { getGravity } from "./getGravity";
 
 export {
     getArrayFromNumber,
@@ -32,4 +33,5 @@ export {
     getMutableArray,
     getLineScore,
     getLevel,
+    getGravity,
 }
