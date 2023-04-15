@@ -32,7 +32,7 @@ const GameBoard = () => {
         }
         const deltaTime = time - lastUpdateTimeRef.current
         progressTimeRef.current += deltaTime
-        if (progressTimeRef.current > 500 / getGravity(snap.lines)) {
+        if (progressTimeRef.current > 500 - ((50 * getGravity(snap.lines))) - 50) {
             movePieceDown()
             progressTimeRef.current = 0
         } 
@@ -233,7 +233,7 @@ const GameBoard = () => {
     }, [snap])
 
     return (
-        <div>
+        <div className="gameboard">
             {getArrayFromNumber(rows).map((row) =>
             <BoardRow
             key={row}

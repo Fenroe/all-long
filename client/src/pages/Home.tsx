@@ -18,10 +18,10 @@ const Home = () => {
   }
 
   return (
-    <main className="w-full h-full">
+    <main className="w-screen h-screen flex flex-col justify-center items-center home">
       <div className="w-full flex flex-col justify-center items-center home-play-container">
-        <h1 className="text-7xl">Blocks</h1>
-        <button className="w-36 h-12 border-black border rounded-lg text-2xl" onClick={startGame}>Play</button>
+        <h1 className="text-8xl uppercase">Blocks</h1>
+        <button className="w-56 h-20 border-black border rounded-lg text-4xl uppercase" onClick={startGame}>Play</button>
       </div>
     </main>
   )
