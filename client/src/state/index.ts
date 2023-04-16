@@ -13,6 +13,7 @@ interface stateInterface {
     nextPieceType: string;
     lines: number;
     dropPoints: number;
+    showModal: boolean;
 
 }
 const state: stateInterface = proxy({
@@ -28,6 +29,7 @@ const state: stateInterface = proxy({
     nextPieceType: '',
     lines: 0,
     dropPoints: 0,
+    showModal: false,
 })
 
 export default state;

@@ -20,8 +20,10 @@ const Home = () => {
   return (
     <main className="w-screen h-screen flex flex-col justify-center items-center home">
       <div className="w-full flex flex-col justify-center items-center home-play-container">
-        <h1 className="text-8xl uppercase">Blocks</h1>
-        <button className="w-56 h-20 border-black border rounded-lg text-4xl uppercase" onClick={startGame}>Play</button>
+        <h1 className="text-8xl uppercase mb-10">Blocks</h1>
+        <button className="w-56 h-16 border-black border rounded-lg text-4xl uppercase mb-2" onClick={() => state.showModal = true}>Controls</button>
+        <button className="w-56 h-16 border-black border rounded-lg text-4xl uppercase mb-2" onClick={startGame}>Play</button>
+        <button className="w-56 h-16 border-black border rounded-lg text-4xl uppercase mb-2">Scores</button>
       </div>
     </main>
   )
