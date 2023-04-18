@@ -14,6 +14,7 @@ const Home = () => {
     const nextPiece = getRandomPiece()
     state.nextPieceTiles = nextPiece.defaultPosition
     state.nextPieceType = nextPiece.name
+    state.previewPieceTiles = nextPiece.previewPosition
     state.intro = false
   }
 

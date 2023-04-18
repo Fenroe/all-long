@@ -14,11 +14,12 @@ interface stateInterface {
     lines: number;
     dropPoints: number;
     showModal: boolean;
+    previewPieceTiles: number[];
 
 }
 const state: stateInterface = proxy({
     activePieceTiles: [3, 4, 5, 13],
-    gamePaused: false,
+    gamePaused: true,
     occupiedTiles: [],
     nextPieceTiles: [14, 24, 13, 3],
     pieceOrientation: 'spawn',
@@ -30,6 +31,7 @@ const state: stateInterface = proxy({
     lines: 0,
     dropPoints: 0,
     showModal: false,
+    previewPieceTiles: [],
 })
 
 export default state;

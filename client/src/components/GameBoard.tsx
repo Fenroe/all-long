@@ -56,6 +56,7 @@ const GameBoard = () => {
         const newPiece = getRandomPiece()
         state.nextPieceTiles = newPiece.defaultPosition
         state.nextPieceType = newPiece.name
+        state.previewPieceTiles = newPiece.previewPosition
         state.pieceOrientation = 'spawn'
         const gameOverCheck = nextPieceTilesArray.filter((coordinate) => occupiedTileReference.includes(coordinate))
         if (gameOverCheck.length > 0) state.outro = true

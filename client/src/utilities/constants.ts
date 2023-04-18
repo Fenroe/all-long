@@ -12,30 +12,37 @@ const pieces = [
     {
         name: 'cross',
         defaultPosition: [3, 4, 5, 14],
+        previewPosition: [11, 12, 13, 22],
     },
     {
         name: 'L',
         defaultPosition: [3, 4, 5, 13],
+        previewPosition: [11, 12, 13, 21],
     },
     {
         name: 'reverse L',
         defaultPosition: [3, 4, 5, 15],
+        previewPosition: [11, 12, 13, 23],
     },
     {
         name: 'long',
         defaultPosition: [3, 4, 5, 6],
+        previewPosition: [11, 12, 13, 14],
     },
     {
         name: 'zig',
         defaultPosition: [4, 5, 15, 16],
+        previewPosition: [11, 12, 22, 23],
     },
     {
         name: 'reverse zig',
         defaultPosition: [6, 5, 15, 14],
+        previewPosition: [13, 12, 22, 21],
     },
     {
         name: 'square',
         defaultPosition: [4, 5, 14, 15],
+        previewPosition: [11, 12, 21, 22],
     },
 ]
 
