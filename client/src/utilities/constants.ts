@@ -42,7 +42,7 @@ const pieces = [
     {
         name: 'square',
         defaultPosition: [4, 5, 14, 15],
-        previewPosition: [11, 12, 21, 22],
+        previewPosition: [12, 13, 22, 23],
     },
 ]
 

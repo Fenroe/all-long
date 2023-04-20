@@ -25,6 +25,7 @@ const Home = () => {
         <button className="w-56 h-16 border-black border rounded-lg text-4xl uppercase mb-2" onClick={() => state.showModal = true}>Controls</button>
         <button className="w-56 h-16 border-black border rounded-lg text-4xl uppercase mb-2" onClick={startGame}>Play</button>
         <button className="w-56 h-16 border-black border rounded-lg text-4xl uppercase mb-2">Scores</button>
+        <button className="w-56 h-16 border-black border rounded-lg text-4xl uppercase mb-2">Dark Mode</button>
       </div>
     </main>
   )

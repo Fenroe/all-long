@@ -34,7 +34,7 @@ button {
     transition-timing-function: linear;
 }
 
-button:hover {
+button:hover, button:focus {
     transform: scale(1.05);
     color: #e4e5f1;
     animation-duration: .2s;

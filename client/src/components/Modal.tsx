@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import ReactDOM from "react-dom"
 import { useSnapshot } from "valtio"
 import state from "../state"
@@ -5,6 +6,18 @@ import state from "../state"
 const Modal = () => {
     const snap = useSnapshot(state)
     
+    useEffect(() => {
+        const exitModal = (evt: KeyboardEvent) => {
+            if (evt.code === 'Escape') {
+                state.showModal = false
+            }
+        }
+
+        document.addEventListener('keydown', exitModal)
+
+        return () => document.removeEventListener('keydown', exitModal)
+    }, [])
+
     return ReactDOM.createPortal(
         <>
             <div className="modal-background" style={snap.showModal ? { visibility: 'visible', opacity: '1' } : {}}/>

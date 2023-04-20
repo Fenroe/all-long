@@ -9,7 +9,7 @@ const Tile = ({ type, id }: {type?: string, id: number }) => {
   }
   
   return (
-    <div className="w-8 h-8 tile" style={checkForColour() ? { backgroundColor: '#9394a5', border: '1px solid gray', borderBottom: 'none' } : {}}></div>
+    <div className="tile w-8 h-8" style={checkForColour() ? { backgroundColor: '#9394a5', border: '1px solid gray', borderBottom: 'none' } : {}}></div>
   )
 }
 
