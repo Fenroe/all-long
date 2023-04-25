@@ -73,6 +73,8 @@ button:hover, button:focus {
     transition-delay: .1s, 0s, 0s;
     visibility: hidden;
     opacity: 0;
+    z-index: 2;
+    isolation: isolate;
 
 }
 

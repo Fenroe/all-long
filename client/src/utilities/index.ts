@@ -15,6 +15,8 @@ import { getMutableArray } from "./getMutableArray";
 import { getLineScore } from "./getLineScore";
 import { getLevel } from "./getLevel";
 import { getGravity } from "./getGravity";
+import { openModalWithListener } from "./openModalWithListener";
+import { closeModalWithListener } from "./closeModalWithListener";
 
 export {
     getArrayFromNumber,
@@ -34,4 +36,6 @@ export {
     getLineScore,
     getLevel,
     getGravity,
+    openModalWithListener,
+    closeModalWithListener,
 }
