@@ -17,6 +17,7 @@ import { getLevel } from "./getLevel";
 import { getGravity } from "./getGravity";
 import { openModalWithListener } from "./openModalWithListener";
 import { closeModalWithListener } from "./closeModalWithListener";
+import { startGame } from "./startGame";
 
 export {
     getArrayFromNumber,
@@ -38,4 +39,5 @@ export {
     getGravity,
     openModalWithListener,
     closeModalWithListener,
+    startGame,
 }

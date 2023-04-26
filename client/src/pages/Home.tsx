@@ -1,7 +1,6 @@
 import { useSnapshot } from 'valtio'
 import state from '../state' 
-import { getRandomPiece } from '../utilities'
-import { openModalWithListener } from '../utilities'
+import { openModalWithListener, startGame } from '../utilities'
 
 const Home = () => {
   const snap = useSnapshot(state)
@@ -14,19 +13,6 @@ const Home = () => {
   const showScores = () => {
     state.modalContents = 'Scores'
     openModalWithListener()
-  }
-
-  const startGame = () => {
-    state.score = 0
-    state.lines = 0
-    const startingPiece = getRandomPiece()
-    state.activePieceTiles = startingPiece.defaultPosition
-    state.pieceType = startingPiece.name
-    const nextPiece = getRandomPiece()
-    state.nextPieceTiles = nextPiece.defaultPosition
-    state.nextPieceType = nextPiece.name
-    state.previewPieceTiles = nextPiece.previewPosition
-    state.intro = false
   }
 
   return (

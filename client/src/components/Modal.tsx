@@ -4,17 +4,23 @@ import { useSnapshot } from "valtio"
 import state from "../state"
 import FocusLock from 'react-focus-lock'
 import Scores from "./Scores"
+import PauseMenu from "./PauseMenu"
 
 
 const Modal = () => {
     const snap = useSnapshot(state)
 
     const renderModalContents = () => {
+        if (snap.outro) {
+            return <Controls />
+        }
         switch(snap.modalContents) {
             case 'Controls':
                 return <Controls />
             case 'Scores':
                 return <Scores />
+            case 'Pause':
+                return <PauseMenu />
             default:
                 return <Controls />
         }

@@ -2,11 +2,18 @@ import { useSnapshot } from 'valtio'
 import { getArrayFromNumber, getLevel } from '../utilities'
 import PreviewRow from './PreviewRow'
 import state from '../state'
+import { openModalWithListener } from '../utilities'
 
 const GameInfo = () => {
     const snap = useSnapshot(state)
 
     const rows = 4
+
+    const openPauseMenu = () => {
+        state.gamePaused = true
+        state.modalContents = 'Pause'
+        openModalWithListener()
+    }
 
     return (
         <div className="h-[576px] flex justify-between items-center bg-[#d2d3db] px-9 py-6 flex-col">
@@ -34,7 +41,7 @@ const GameInfo = () => {
                     </div>
                 </div>
             </div>
-            <button className="text-2xl w-full h-12 rounded-lg border font-bold bg-[#e4e5f1]" onClick={() => state.gamePaused = !snap.gamePaused}>Pause</button>
+            <button className="text-2xl w-full h-12 rounded-lg border font-bold bg-[#e4e5f1]" onClick={openPauseMenu}>Pause</button>
         </div>
     )
 }

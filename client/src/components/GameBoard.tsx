@@ -6,6 +6,7 @@ import {
     getRandomPiece, adjustOccupiedTiles, checkForCompletedRows,
     combineCompletedRows, removeCompletedRows, getMutableArray, getLineScore,
     getGravity,
+    openModalWithListener,
 } from '../utilities'
 import { useSnapshot } from 'valtio'
 import state from '../state'
@@ -22,7 +23,14 @@ const GameBoard = () => {
 
     const rows: number = 18
 
+    const openPauseMenu = () => {
+        state.gamePaused = true
+        state.modalContents = 'Pause'
+        openModalWithListener()
+    }
+    
     const update = (time: number) => {
+        if (snap.outro) return
         requestRef.current = requestAnimationFrame(update)
         if (snap.gamePaused) {
             return
@@ -32,7 +40,7 @@ const GameBoard = () => {
         }
         const deltaTime = time - lastUpdateTimeRef.current
         progressTimeRef.current += deltaTime
-        if (progressTimeRef.current > 500 - ((50 * getGravity(snap.lines))) - 50) {
+        if (progressTimeRef.current > 750 - ((50 * getGravity(snap.lines))) - 50) {
             movePieceDown()
             progressTimeRef.current = 0
         } 
@@ -59,7 +67,10 @@ const GameBoard = () => {
         state.previewPieceTiles = newPiece.previewPosition
         state.pieceOrientation = 'spawn'
         const gameOverCheck = nextPieceTilesArray.filter((coordinate) => occupiedTileReference.includes(coordinate))
-        if (gameOverCheck.length > 0) state.outro = true
+        if (gameOverCheck.length > 0) {
+            state.outro = true
+            state.showModal = true
+        }
     }
 
     const movePieceDown = () => {
@@ -203,6 +214,7 @@ const GameBoard = () => {
 
     useEffect(() => {
         const handleKeyPress = (evt: KeyboardEvent) => {
+            if (snap.outro) return
             if (evt.key === 'ArrowDown') {
                 userMovePieceDown()
             }
@@ -217,6 +229,11 @@ const GameBoard = () => {
             }
             if (evt.code === 'Space') {
                 hardDrop()
+            }
+            if (evt.code === 'Escape') {
+                if (!state.gamePaused && !state.showModal) {
+                    openPauseMenu()
+                }
             }
         }
 

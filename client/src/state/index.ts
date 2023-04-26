@@ -20,11 +20,11 @@ interface stateInterface {
 }
 const state: stateInterface = proxy({
     activePieceTiles: [3, 4, 5, 13],
-    gamePaused: true,
+    gamePaused: false,
     occupiedTiles: [],
     nextPieceTiles: [14, 24, 13, 3],
     pieceOrientation: 'spawn',
-    pieceType: 'L',
+    pieceType: '',
     intro: true,
     outro: false,
     score: 0,
