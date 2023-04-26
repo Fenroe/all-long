@@ -15,6 +15,7 @@ interface stateInterface {
     dropPoints: number;
     showModal: boolean;
     previewPieceTiles: number[];
+    modalContents: string;
 
 }
 const state: stateInterface = proxy({
@@ -32,6 +33,7 @@ const state: stateInterface = proxy({
     dropPoints: 0,
     showModal: false,
     previewPieceTiles: [],
+    modalContents: 'Controls',
 })
 
 export default state;

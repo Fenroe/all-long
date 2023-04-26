@@ -27,14 +27,14 @@
     background-color: #e4e5f1;
 }
 
-button {
+.primary-button {
     opacity: 1;
     transition-property: transform;
     transition-duration: .2s;
     transition-timing-function: linear;
 }
 
-button:hover, button:focus {
+.primary-button:hover, .primary-button:focus {
     transform: scale(1.05);
     color: #e4e5f1;
     animation-duration: .2s;
