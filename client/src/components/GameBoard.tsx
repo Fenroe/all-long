@@ -10,8 +10,8 @@ import {
 } from '../utilities'
 import { useSnapshot } from 'valtio'
 import state from '../state'
+import { GamePiece } from '../utilities/constants'
 
-// 10 wide x 18 tall
 const GameBoard = () => {
     const requestRef = useRef(0)
 
@@ -61,7 +61,10 @@ const GameBoard = () => {
         snap.nextPieceTiles.forEach((coordinate) => nextPieceTilesArray.push(coordinate))
         state.activePieceTiles = nextPieceTilesArray
         state.pieceType = snap.nextPieceType
-        const newPiece = getRandomPiece()
+        let newPiece = getRandomPiece()
+        if (newPiece === false || newPiece.name === state.nextPieceType) {
+            newPiece = getRandomPiece(true) as GamePiece
+        }
         state.nextPieceTiles = newPiece.defaultPosition
         state.nextPieceType = newPiece.name
         state.previewPieceTiles = newPiece.previewPosition
@@ -214,7 +217,7 @@ const GameBoard = () => {
 
     useEffect(() => {
         const handleKeyPress = (evt: KeyboardEvent) => {
-            if (snap.outro) return
+            if (snap.outro || snap.gamePaused) return
             if (evt.key === 'ArrowDown') {
                 userMovePieceDown()
             }

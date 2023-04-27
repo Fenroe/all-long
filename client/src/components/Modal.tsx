@@ -5,6 +5,7 @@ import state from "../state"
 import FocusLock from 'react-focus-lock'
 import Scores from "./Scores"
 import PauseMenu from "./PauseMenu"
+import PostGame from "./PostGame"
 
 
 const Modal = () => {
@@ -12,7 +13,7 @@ const Modal = () => {
 
     const renderModalContents = () => {
         if (snap.outro) {
-            return <Controls />
+            return <PostGame />
         }
         switch(snap.modalContents) {
             case 'Controls':

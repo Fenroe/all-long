@@ -8,7 +8,13 @@ const defaultPiecePositions = {
     reverseZig: [5, 4, 14, 13],
 }
 
-const pieces = [
+interface GamePiece {
+    name: string;
+    defaultPosition: number[];
+    previewPosition: number[];
+}
+
+const pieces: Array<GamePiece> = [
     {
         name: 'cross',
         defaultPosition: [3, 4, 5, 14],
@@ -52,5 +58,7 @@ const pieceOrientationArray: Array<'spawn' | 'upright' | 'reverse spawn' | 'reve
 export {
     defaultPiecePositions,
     pieces,
-    pieceOrientationArray,
-}
+    pieceOrientationArray
+};
+
+export type { GamePiece };
