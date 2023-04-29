@@ -12,12 +12,12 @@ const PauseMenu = () => {
 
     const modalRef = useOutsideClick(closeModalWithListener)
 
-    const restartGame = async () => {
-        startGame()
+    const restartGame = () => {
+        startGame(0)
         closeModalWithListener()
     }
 
-    const exitGame = async () => {
+    const exitGame = () => {
         state.intro = true
         closeModalWithListener()
     }
@@ -32,24 +32,24 @@ const PauseMenu = () => {
         <div ref={modalRef} className="modal relative text-3xl font-bold" style={snap.showModal ? { visibility: 'visible', transform: 'translate(-50%, -50%)', opacity: '1' } : {}}>
             {menuView === 'Menu' &&
             <div className="w-full h-full flex flex-col justify-evenly items-center">
-                <button className="primary-button border border-black w-full h-16 rounded-full" onClick={closeModalWithListener}>Resume</button>
-                <button className="primary-button border border-black w-full h-16 rounded-full" onClick={() => setMenuView('Restart')}>Restart</button>
-                <button className="primary-button border border-black w-full h-16 rounded-full" onClick={() => setMenuView('Exit')}>Exit</button>
+                <button className="text-2xl w-full h-16 rounded-md border-2 border-black primary-button"onClick={closeModalWithListener}>Resume</button>
+                <button className="text-2xl w-full h-16 rounded-md border-2 border-black primary-button"onClick={() => setMenuView('Restart')}>Restart</button>
+                <button className="text-2xl w-full h-16 rounded-md border-2 border-black primary-button"onClick={() => setMenuView('Exit')}>Exit</button>
             </div>}
             {menuView === 'Restart' &&
             <div className="w-full h-full flex flex-col justify-center items-center gap-6">
                 <h2 className="text-3xl text-center">Restart the game?</h2>
                 <div className="w-full flex flex-col gap-3">
-                    <button className="primary-button border border-black w-full h-16 rounded-full" onClick={restartGame}>Yes</button>
-                    <button className="primary-button border border-black w-full h-16 rounded-full" onClick={() => setMenuView('Menu')}>No</button>
+                    <button className="text-2xl w-full h-16 rounded-md border-2 border-black primary-button"onClick={restartGame}>Yes</button>
+                    <button className="text-2xl w-full h-16 rounded-md border-2 border-black primary-button"onClick={() => setMenuView('Menu')}>No</button>
                 </div>
             </div>}
             {menuView === 'Exit' &&
             <div className="w-full h-full flex flex-col justify-center items-center gap-6">
                 <h2 className="text-3xl text-center">Exit the game?</h2>
                 <div className="w-full flex flex-col gap-3">
-                    <button className="primary-button border border-black w-full h-16 rounded-full" onClick={exitGame}>Yes</button>
-                    <button className="primary-button border border-black w-full h-16 rounded-full" onClick={() => setMenuView('Menu')}>No</button>
+                    <button className="text-2xl w-full h-16 rounded-md border-2 border-black primary-button"onClick={exitGame}>Yes</button>
+                    <button className="text-2xl w-full h-16 rounded-md border-2 border-black primary-button"onClick={() => setMenuView('Menu')}>No</button>
                 </div>
             </div>}
         </div>

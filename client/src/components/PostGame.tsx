@@ -8,6 +8,8 @@ const PostGame = () => {
 
     const [newHighScore, setNewHighScore] = useState(false)
 
+    const [scoreSaved, setScoreSaved] = useState(false)
+
     const nameRef = useRef<HTMLInputElement>(null)
 
     const updateName = () => {
@@ -24,7 +26,11 @@ const PostGame = () => {
         localStorage.setItem('localScores', JSON.stringify(newLocalScores))
     }
 
-    const handleSubmiit = () => {
+    const handleSaveScore = () => {
+        setScoreSaved(true)
+    }
+
+    const handleClose = () => {
         updateName()
         state.showModal = false
         state.intro = true
@@ -36,13 +42,21 @@ const PostGame = () => {
 
     return (
         <div className="modal relative flex flex-col items-center justify-center gap-6" style={snap.showModal ? { visibility: 'visible', transform: 'translate(-50%, -50%)', opacity: '1' } : {}}>
-            <h2 className="text-3xl text-center font-bold">You scored a total of {snap.score} points</h2>
-            {newHighScore && <h2 className="text-3xl text-center font-bold">This is your new high score!</h2>}
-            <form onSubmit={(evt) => evt.preventDefault()}className="w-full flex flex-col justify-center items-center gap-3">
-            <label htmlFor="name" className="text-2xl font-bold text-center w-full">Enter your name</label>
-            <input ref={nameRef} defaultValue="Tett" type="text" id="name" className="border rounded-full text-2xl text-center bg-white p-2"/>
-            <button className="primary-button w-full border border-black rounded-full p-2 text-2xl font-bold" onClick={handleSubmiit}>Submit</button>
-            </form>
+            {!scoreSaved &&
+            <>
+                <h2 className="text-3xl text-center font-bold">You scored a total of {snap.score} points</h2>
+                {newHighScore && <h2 className="text-3xl text-center font-bold">This is your new high score!</h2>}
+                <form onSubmit={(evt) => evt.preventDefault()}className="w-full flex flex-col justify-center items-center gap-3">
+                    <label htmlFor="name" className="text-2xl font-bold text-center w-full">Enter your name</label>
+                    <input ref={nameRef} defaultValue="Tett" type="text" id="name" className="border rounded-full text-2xl text-center bg-white p-2"/>
+                    <button className="text-3xl w-full h-14 rounded-md border-2 border-black primary-button" onClick={handleSaveScore}>Save Score</button>
+                </form>
+            </>}
+            {scoreSaved &&
+            <>
+                <h2 className="text-3xl text-center font-bold">Your score has been saved{newHighScore ? ' and submitted to the leaderboard.' : '.'}</h2>
+                <button className="text-3xl w-full h-14 rounded-md border-2 border-black primary-button" onClick={handleClose}>Close</button>
+            </>}
         </div>
     )
 }

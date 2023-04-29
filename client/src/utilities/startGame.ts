@@ -2,11 +2,11 @@ import state from "../state"
 import { GamePiece } from "../types"
 import getRandomPiece from "./getRandomPiece"
 
-export const startGame = () => {
+export const startGame = (level:number) => {
     state.occupiedTiles = []
     state.score = 0
     state.lines = 0
-    state.level = 0
+    state.level = level
     state.dropPoints = 0
     let startingPiece = getRandomPiece()
     if (startingPiece === false) startingPiece = getRandomPiece(true) as GamePiece
