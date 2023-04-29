@@ -1,3 +1,5 @@
+import { GamePiece } from "../types";
+
 const defaultPiecePositions = {
     long: [3, 4, 5, 6],
     square: [3, 4, 13, 14],
@@ -6,12 +8,6 @@ const defaultPiecePositions = {
     reverseL: [3, 13, 14, 15],
     zig: [3, 4, 14, 15],
     reverseZig: [5, 4, 14, 13],
-}
-
-interface GamePiece {
-    name: string;
-    defaultPosition: number[];
-    previewPosition: number[];
 }
 
 const pieces: Array<GamePiece> = [
@@ -60,5 +56,3 @@ export {
     pieces,
     pieceOrientationArray
 };
-
-export type { GamePiece };

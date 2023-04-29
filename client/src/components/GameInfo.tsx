@@ -1,5 +1,5 @@
 import { useSnapshot } from 'valtio'
-import { getArrayFromNumber, getLevel } from '../utilities'
+import { getArrayFromNumber } from '../utilities'
 import PreviewRow from './PreviewRow'
 import state from '../state'
 import { openModalWithListener } from '../utilities'
@@ -29,7 +29,7 @@ const GameInfo = () => {
                 <div className="w-48 flex flex-col gap-3 text-2xl p-6 rounded-xl bg-[#e4e5f1]">
                     <div className="flex justify-between w-full bg-inherit">
                         <span className="font-bold bg-inherit">Level</span>
-                        <span className="bg-inherit">{getLevel(snap.lines)}</span>
+                        <span className="bg-inherit">{snap.level}</span>
                     </div>
                     <div className="flex justify-between w-full bg-inherit">
                         <span className="font-bold bg-inherit">Score</span>

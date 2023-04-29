@@ -20,49 +20,6 @@ const Scores = () => {
         }
     }
 
-    const localScores: any[] = [
-        {
-            name: 'FEN',
-            score: 9999,
-        },
-        {
-            name: 'ZIC',
-            score: 9996,
-        },
-        {
-            name: 'FEN',
-            score: 9999,
-        },
-        {
-            name: 'ZIC',
-            score: 9996,
-        },
-        {
-            name: 'FEN',
-            score: 9999,
-        },
-        {
-            name: 'ZIC',
-            score: 9996,
-        },
-        {
-            name: 'FEN',
-            score: 9999,
-        },
-        {
-            name: 'ZIC',
-            score: 9996,
-        },
-        {
-            name: 'FEN',
-            score: 9999,
-        },
-        {
-            name: 'ZIC',
-            score: 9996,
-        },
-    ]
-
     return (
         <div ref={modalRef} className="modal relative flex flex-col items-center justify-around" style={snap.showModal ? { visibility: 'visible', transform: 'translate(-50%, -50%)', opacity: '1' } : {}}>
             <div className="relative mb-3 w-full h-20">
@@ -71,10 +28,10 @@ const Scores = () => {
             </div>
             {scoresMode === 'Local' &&
                 <section className="flex flex-col w-full h-full items-center gap-3 py-10 px-5">
-                    {localScores.length < 1 &&
+                    {snap.localScores.length < 1 &&
                     <h2>You haven't submitted a score yet.</h2>}
-                    {localScores.map((score) =>
-                    <div className="flex justify-between w-full text-xl" key={localScores.indexOf(score)}>
+                    {snap.localScores.map((score) =>
+                    <div className="flex justify-between w-full text-xl" key={score.id}>
                         <span>{score.name}</span>
                         <span>{score.score}</span>
                     </div>)}
@@ -82,10 +39,10 @@ const Scores = () => {
             }
             {scoresMode === 'Leaderboard' &&
                 <section className="flex flex-col w-full h-full items-center gap-3 py-10 px-5">
-                    {localScores.length < 1 &&
+                    {snap.localScores.length < 1 &&
                     <h2>You haven't submitted a score yet.</h2>}
-                    {localScores.map((score) =>
-                    <div className="flex justify-between w-full text-xl">
+                    {snap.localScores.map((score) =>
+                    <div className="flex justify-between w-full text-xl" key={score.id}>
                         <span>{score.name}</span>
                         <span>{score.score}</span>
                     </div>)}

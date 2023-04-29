@@ -1,12 +1,13 @@
 export const getLineScore = (numberOfRows: number, level: number) => {
+    const modifier = level + 1
     switch (numberOfRows) {
         case 1:
-            return 100 * level
+            return 40 * modifier
         case 2:
-            return 300 * level
+            return 100 * modifier
         case 3:
-            return 500 * level
+            return 300 * modifier
         default:
-            return 800 * level
+            return 1200 * modifier
     }
 }

@@ -1,24 +1,7 @@
 import { proxy } from 'valtio'
+import { GlobalState } from '../types';
 
-interface stateInterface {
-    activePieceTiles: number[];
-    gamePaused: boolean;
-    occupiedTiles: number[];
-    nextPieceTiles: number[];
-    pieceOrientation: 'spawn' | 'upright' | 'reverse spawn' | 'reverse upright';
-    pieceType: string;
-    intro: boolean;
-    outro: boolean;
-    score: number;
-    nextPieceType: string;
-    lines: number;
-    dropPoints: number;
-    showModal: boolean;
-    previewPieceTiles: number[];
-    modalContents: string;
-
-}
-const state: stateInterface = proxy({
+const state: GlobalState = proxy({
     activePieceTiles: [3, 4, 5, 13],
     gamePaused: false,
     occupiedTiles: [],
@@ -34,6 +17,9 @@ const state: stateInterface = proxy({
     showModal: false,
     previewPieceTiles: [],
     modalContents: 'Controls',
+    localScores: [],
+    gameId: 0,
+    level: 0,
 })
 
 export default state;

@@ -5,12 +5,12 @@ import {
     rotateLong, rotateZig, rotateReverseZig, pieceOrientationArray,
     getRandomPiece, adjustOccupiedTiles, checkForCompletedRows,
     combineCompletedRows, removeCompletedRows, getMutableArray, getLineScore,
-    getGravity,
     openModalWithListener,
+    determineFallSpeed,
 } from '../utilities'
 import { useSnapshot } from 'valtio'
 import state from '../state'
-import { GamePiece } from '../utilities/constants'
+import { GamePiece, UserScore } from '../types'
 
 const GameBoard = () => {
     const requestRef = useRef(0)
@@ -23,57 +23,21 @@ const GameBoard = () => {
 
     const rows: number = 18
 
+    const processScore = () => {
+        const newScore:UserScore = {
+            id: snap.gameId,
+            name: 'Tett',
+            score: snap.score
+        }
+        const localScores = [...snap.localScores, newScore].sort((a, b) => b.score - a.score)
+        state.localScores = localScores
+        localStorage.setItem('localScores', JSON.stringify(localScores))
+    }
+
     const openPauseMenu = () => {
         state.gamePaused = true
         state.modalContents = 'Pause'
         openModalWithListener()
-    }
-    
-    const update = (time: number) => {
-        if (snap.outro) return
-        requestRef.current = requestAnimationFrame(update)
-        if (snap.gamePaused) {
-            return
-        }
-        if (!lastUpdateTimeRef.current) {
-            lastUpdateTimeRef.current = time
-        }
-        const deltaTime = time - lastUpdateTimeRef.current
-        progressTimeRef.current += deltaTime
-        if (progressTimeRef.current > 750 - ((50 * getGravity(snap.lines))) - 50) {
-            movePieceDown()
-            progressTimeRef.current = 0
-        } 
-        lastUpdateTimeRef.current = time
-    } 
-
-    const spawnNewPiece = (occupiedTiles?: number[]) => {
-        const occupiedTileReference = occupiedTiles ? occupiedTiles : getMutableArray(snap.occupiedTiles)
-        const completedRows = checkForCompletedRows((occupiedTileReference))
-        if (completedRows.length > 0) {
-            let newOccupiedTiles = removeCompletedRows(combineCompletedRows(completedRows), getMutableArray(occupiedTileReference))
-            newOccupiedTiles = adjustOccupiedTiles(completedRows, newOccupiedTiles)
-            state.occupiedTiles = newOccupiedTiles
-            state.lines += completedRows.length
-            state.score += getLineScore(completedRows.length, Math.ceil(snap.lines / 10) || 1)
-        }
-        const nextPieceTilesArray: number[] = []
-        snap.nextPieceTiles.forEach((coordinate) => nextPieceTilesArray.push(coordinate))
-        state.activePieceTiles = nextPieceTilesArray
-        state.pieceType = snap.nextPieceType
-        let newPiece = getRandomPiece()
-        if (newPiece === false || newPiece.name === state.nextPieceType) {
-            newPiece = getRandomPiece(true) as GamePiece
-        }
-        state.nextPieceTiles = newPiece.defaultPosition
-        state.nextPieceType = newPiece.name
-        state.previewPieceTiles = newPiece.previewPosition
-        state.pieceOrientation = 'spawn'
-        const gameOverCheck = nextPieceTilesArray.filter((coordinate) => occupiedTileReference.includes(coordinate))
-        if (gameOverCheck.length > 0) {
-            state.outro = true
-            state.showModal = true
-        }
     }
 
     const movePieceDown = () => {
@@ -101,6 +65,57 @@ const GameBoard = () => {
                 newArray.push(coordinate + 10)
             })
             state.activePieceTiles = newArray
+        }
+    }
+    
+    const update = (time: number) => {
+        if (snap.outro) return
+        requestRef.current = requestAnimationFrame(update)
+        if (snap.gamePaused) {
+            return
+        }
+        if (!lastUpdateTimeRef.current) {
+            lastUpdateTimeRef.current = time
+        }
+        const deltaTime = time - lastUpdateTimeRef.current
+        progressTimeRef.current += deltaTime
+        if (progressTimeRef.current > determineFallSpeed(snap.level)) {
+            movePieceDown()
+            progressTimeRef.current = 0
+        } 
+        lastUpdateTimeRef.current = time
+    } 
+
+    const spawnNewPiece = (occupiedTiles?: number[]) => {
+        const occupiedTileReference = occupiedTiles ? occupiedTiles : getMutableArray(snap.occupiedTiles)
+        const completedRows = checkForCompletedRows((occupiedTileReference))
+        if (completedRows.length > 0) {
+            let newOccupiedTiles = removeCompletedRows(combineCompletedRows(completedRows), getMutableArray(occupiedTileReference))
+            newOccupiedTiles = adjustOccupiedTiles(completedRows, newOccupiedTiles)
+            state.occupiedTiles = newOccupiedTiles
+            const newLines = snap.lines + completedRows.length
+            state.lines = newLines
+            state.score += getLineScore(completedRows.length, snap.level)
+            const newLevel = Math.floor(newLines / 10)
+            if (snap.level < newLevel) state.level = newLevel
+        }
+        const nextPieceTilesArray: number[] = []
+        snap.nextPieceTiles.forEach((coordinate) => nextPieceTilesArray.push(coordinate))
+        state.activePieceTiles = nextPieceTilesArray
+        state.pieceType = snap.nextPieceType
+        let newPiece = getRandomPiece()
+        if (newPiece === false || newPiece.name === state.nextPieceType) {
+            newPiece = getRandomPiece(true) as GamePiece
+        }
+        state.nextPieceTiles = newPiece.defaultPosition
+        state.nextPieceType = newPiece.name
+        state.previewPieceTiles = newPiece.previewPosition
+        state.pieceOrientation = 'spawn'
+        const gameOverCheck = nextPieceTilesArray.filter((coordinate) => occupiedTileReference.includes(coordinate))
+        if (gameOverCheck.length > 0) {
+            processScore()
+            state.outro = true
+            state.showModal = true
         }
     }
 

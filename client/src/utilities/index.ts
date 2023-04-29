@@ -18,6 +18,7 @@ import { getGravity } from "./getGravity";
 import { openModalWithListener } from "./openModalWithListener";
 import { closeModalWithListener } from "./closeModalWithListener";
 import { startGame } from "./startGame";
+import { determineFallSpeed } from "./determineFallSpeed";
 
 export {
     getArrayFromNumber,
@@ -40,4 +41,5 @@ export {
     openModalWithListener,
     closeModalWithListener,
     startGame,
+    determineFallSpeed,
 }
