@@ -52,7 +52,7 @@ const PreGame = () => {
                     <MdOutlineArrowDropDown className="text-6xl" onClick={decreaseLevel}/>
                 </button>
             </div>
-            <button className="text-2xl w-24 h-12 rounded-md border-2 border-black primary-button" onClick={handleStart}>Start</button>
+            <button className="modal-button" onClick={handleStart}>Start</button>
         </div>
     )
 }

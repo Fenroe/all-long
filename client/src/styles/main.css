@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+    .button {
+        @apply w-56 h-16 border-black border rounded-lg text-4xl uppercase mb-2 transition hover:bg-black hover:text-white hover:scale-110 focus:bg-black focus:text-white focus:scale-110
+    }
+    .modal-button {
+        @apply w-full h-16 font-bold border-black border rounded-lg text-2xl uppercase mb-2 transition hover:bg-black hover:text-white focus:bg-black focus:text-white
+    }
+}
 @font-face {
     font-family: Designer-Block;
     src: url('../assets/Designer-Block.TTF');

@@ -49,7 +49,7 @@ const PostGame = () => {
                 <form onSubmit={(evt) => evt.preventDefault()}className="w-full flex flex-col justify-center items-center gap-3">
                     <label htmlFor="name" className="text-2xl font-bold text-center w-full">Enter your name</label>
                     <input ref={nameRef} defaultValue="Tett" type="text" id="name" className="border rounded-full text-2xl text-center bg-white p-2"/>
-                    <button className="text-3xl w-full h-14 rounded-md border-2 border-black primary-button" onClick={handleSaveScore}>Save Score</button>
+                    <button className="modal-button" onClick={handleSaveScore}>Save Score</button>
                 </form>
             </>}
             {scoreSaved &&

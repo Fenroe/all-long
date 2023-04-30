@@ -48,7 +48,7 @@ const Scores = () => {
                     </div>)}
                 </section>
             }
-            <button className="text-2xl w-24 h-12 rounded-md border-2 border-black primary-button" onClick={closeModalWithListener}>Close</button>
+            <button className="modal-button" onClick={closeModalWithListener}>Close</button>
         </div>
     )
 }
