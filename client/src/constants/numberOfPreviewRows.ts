@@ -1,0 +1,1 @@
+export const numberOfPreviewRows:number = 4

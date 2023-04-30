@@ -1,7 +1,7 @@
 import { getArrayFromNumber } from "../utilities"
-import PreviewTile from "./PreviewTile"
+import { PreviewTile } from "./PreviewTile"
 
-const PreviewRow = ({ rowId }: { rowId: number }) => {
+export const PreviewRow = ({ rowId }: { rowId: number }) => {
     const numberOfTies = 6
 
     return (
@@ -14,5 +14,3 @@ const PreviewRow = ({ rowId }: { rowId: number }) => {
         </div>
     )
 }
-
-export default PreviewRow

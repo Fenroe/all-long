@@ -1,11 +1,11 @@
 import { useState } from "react"
 import { useSnapshot } from "valtio"
-import state from "../state"
+import { state } from "../state"
 import { closeModalWithListener } from "../utilities"
 import { useOutsideClick } from "../hooks"
 
 
-const Scores = () => {
+export const Scores = () => {
     const [scoresMode, setScoresMode] = useState('Local')
 
     const snap = useSnapshot(state)
@@ -52,5 +52,3 @@ const Scores = () => {
         </div>
     )
 }
-
-export default Scores

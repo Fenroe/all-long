@@ -1,15 +1,16 @@
-import Controls from "./Controls"
+import { Controls } from "./Controls"
 import ReactDOM from "react-dom"
 import { useSnapshot } from "valtio"
-import state from "../state"
+import { state } from "../state"
 import FocusLock from 'react-focus-lock'
-import Scores from "./Scores"
-import PauseMenu from "./PauseMenu"
-import PreGame from "./PreGame"
-import PostGame from "./PostGame"
+import { Scores } from "./Scores"
+import { PauseMenu } from "./PauseMenu"
+import { PreGame } from "./PreGame"
+import { PostGame } from "./PostGame"
+import { modalContentsValues } from "../constants"
 
 
-const Modal = () => {
+export const Modal = () => {
     const snap = useSnapshot(state)
 
     const renderModalContents = () => {
@@ -17,13 +18,13 @@ const Modal = () => {
             return <PostGame />
         }
         switch(snap.modalContents) {
-            case 'Controls':
+            case modalContentsValues.controls:
                 return <Controls />
-            case 'Scores':
+            case modalContentsValues.scores:
                 return <Scores />
-            case 'Pause':
+            case modalContentsValues.pauseMenu:
                 return <PauseMenu />
-            case 'Pre Game':
+            case modalContentsValues.levelSelect:
                 return <PreGame />
             default:
                 return <Controls />
@@ -38,8 +39,6 @@ const Modal = () => {
             </FocusLock>
 
         </>,
-        document.getElementById('modal')!  
+        document.getElementById('modal') as HTMLElement
     )
 }
-
-export default Modal

@@ -1,4 +1,4 @@
-import sortCoordinatesArray from "../sortCoordinatesArray";
+import { sortCoordinatesArray } from "../sortCoordinatesArray";
 import { describe, expect, it } from 'vitest'
 
 describe('happy path', () => {

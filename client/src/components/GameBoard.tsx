@@ -1,18 +1,18 @@
 import { useEffect, useRef } from 'react'
-import BoardRow from './BoardRow'
+import { BoardRow } from './BoardRow'
 import {
     getArrayFromNumber, rotateCross, rotateL, rotateReverseL,
-    rotateLong, rotateZig, rotateReverseZig, pieceOrientationArray,
+    rotateLong, rotateZig, rotateReverseZig,
     getRandomPiece, adjustOccupiedTiles, checkForCompletedRows,
     combineCompletedRows, removeCompletedRows, getMutableArray, getLineScore,
-    openModalWithListener,
-    determineFallSpeed,
+    openModalWithListener, determineFallSpeed,
 } from '../utilities'
 import { useSnapshot } from 'valtio'
-import state from '../state'
+import { state } from '../state'
 import { GamePiece, UserScore } from '../types'
+import { defaultUserName, keyboardButtonCodes, localStorageKeys, modalContentsValues, numberOfGameboardRows, tetrominoNames, tetrominoOrientation } from '../constants'
 
-const GameBoard = () => {
+export const GameBoard = () => {
     const requestRef = useRef(0)
 
     const lastUpdateTimeRef = useRef(0)
@@ -21,22 +21,20 @@ const GameBoard = () => {
 
     const snap = useSnapshot(state)
 
-    const rows: number = 18
-
     const processScore = () => {
         const newScore:UserScore = {
             id: snap.gameId,
-            name: 'Tett',
+            name: defaultUserName,
             score: snap.score
         }
         const localScores = [...snap.localScores, newScore].sort((a, b) => b.score - a.score)
         state.localScores = localScores
-        localStorage.setItem('localScores', JSON.stringify(localScores))
+        localStorage.setItem(localStorageKeys.localScores, JSON.stringify(localScores))
     }
 
     const openPauseMenu = () => {
         state.gamePaused = true
-        state.modalContents = 'Pause'
+        state.modalContents = modalContentsValues.pauseMenu
         openModalWithListener()
     }
 
@@ -110,7 +108,7 @@ const GameBoard = () => {
         state.nextPieceTiles = newPiece.defaultPosition
         state.nextPieceType = newPiece.name
         state.previewPieceTiles = newPiece.previewPosition
-        state.pieceOrientation = 'spawn'
+        state.pieceOrientation = tetrominoOrientation[0]
         const gameOverCheck = nextPieceTilesArray.filter((coordinate) => occupiedTileReference.includes(coordinate))
         if (gameOverCheck.length > 0) {
             processScore()
@@ -195,22 +193,22 @@ const GameBoard = () => {
     const rotatePiece = () => {
         let newCoordinates: number[] = []
         switch(snap.pieceType) {
-            case 'cross':
+            case tetrominoNames.cross:
                 newCoordinates = rotateCross(snap.activePieceTiles, snap.pieceOrientation)
                 break;
-            case 'L':
+            case tetrominoNames.lShape:
                 newCoordinates = rotateL(snap.activePieceTiles, snap.pieceOrientation)
                 break;
-            case 'reverse L':
+            case tetrominoNames.reverseLShape:
                 newCoordinates = rotateReverseL(snap.activePieceTiles, snap.pieceOrientation)
                 break;
-            case 'long':
+            case tetrominoNames.long:
                 newCoordinates = rotateLong(snap.activePieceTiles, snap.pieceOrientation)
                 break;
-            case 'zig':
+            case tetrominoNames.zigZag:
                 newCoordinates = rotateZig(snap.activePieceTiles, snap.pieceOrientation)
                 break;
-            case 'reverse zig':
+            case tetrominoNames.reverseZigZag:
                 newCoordinates = rotateReverseZig(snap.activePieceTiles, snap.pieceOrientation)
             default:
                 break;
@@ -225,30 +223,35 @@ const GameBoard = () => {
         })
         if (isValidMove) {
             state.activePieceTiles = newCoordinates
-            const indexOfOrientation = pieceOrientationArray.indexOf(snap.pieceOrientation)
-            state.pieceOrientation = indexOfOrientation === pieceOrientationArray.length - 1 ? pieceOrientationArray[0] : pieceOrientationArray[indexOfOrientation + 1]
+            const indexOfOrientation = tetrominoOrientation.indexOf(snap.pieceOrientation)
+            state.pieceOrientation =
+            indexOfOrientation === tetrominoOrientation.length - 1
+            ? 
+            tetrominoOrientation[0]
+            :
+            tetrominoOrientation[indexOfOrientation + 1]
         }
     }
 
     useEffect(() => {
         const handleKeyPress = (evt: KeyboardEvent) => {
             if (snap.outro || snap.gamePaused) return
-            if (evt.key === 'ArrowDown') {
+            if (evt.key === keyboardButtonCodes.down) {
                 userMovePieceDown()
             }
-            if (evt.key === 'ArrowLeft') {
+            if (evt.key === keyboardButtonCodes.left) {
                 state.activePieceTiles = movePieceLeft()
             }
-            if (evt.key === 'ArrowRight') {
+            if (evt.key === keyboardButtonCodes.right) {
                 state.activePieceTiles = movePieceRight()
             }
-            if (evt.key === 'ArrowUp') {
+            if (evt.key === keyboardButtonCodes.up) {
                 rotatePiece()
             }
-            if (evt.code === 'Space') {
+            if (evt.code === keyboardButtonCodes.spacebar) {
                 hardDrop()
             }
-            if (evt.code === 'Escape') {
+            if (evt.code === keyboardButtonCodes.escape) {
                 if (!state.gamePaused && !state.showModal) {
                     openPauseMenu()
                 }
@@ -270,7 +273,7 @@ const GameBoard = () => {
 
     return (
         <div className="gameboard">
-            {getArrayFromNumber(rows).map((row) =>
+            {getArrayFromNumber(numberOfGameboardRows).map((row) =>
             <BoardRow
             key={row}
             rowId={row}
@@ -279,5 +282,3 @@ const GameBoard = () => {
         </div>
     )
 }
-
-export default GameBoard

@@ -1,7 +1,7 @@
 import { useSnapshot } from "valtio"
-import state from "../state"
+import { state } from "../state"
 
-const Tile = ({ type, id }: {type?: string, id: number }) => {
+export const Tile = ({ type, id }: {type?: string, id: number }) => {
   const snap = useSnapshot(state)
 
   const checkForColour = () => {
@@ -12,5 +12,3 @@ const Tile = ({ type, id }: {type?: string, id: number }) => {
     <div className="tile w-8 h-8" style={checkForColour() ? { backgroundColor: '#9394a5', border: '1px solid gray', borderBottom: 'none' } : {}}></div>
   )
 }
-
-export default Tile

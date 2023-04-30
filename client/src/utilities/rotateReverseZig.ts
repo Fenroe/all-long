@@ -1,6 +1,6 @@
-import sortCoordinatesArray from "./sortCoordinatesArray"
+import { sortCoordinatesArray } from "./sortCoordinatesArray"
 
-const rotateReverseZig = (currentPosition: readonly number[], currentOrientation: 'spawn' | 'upright' | 'reverse spawn' | 'reverse upright') => {
+export const rotateReverseZig = (currentPosition: readonly number[], currentOrientation: 'spawn' | 'upright' | 'reverse spawn' | 'reverse upright') => {
     const currentPositionCopy = sortCoordinatesArray(currentPosition)
     if (currentOrientation === 'spawn' || currentOrientation === 'reverse spawn') {
         const firstCoordinate = currentPositionCopy[0]
@@ -18,5 +18,3 @@ const rotateReverseZig = (currentPosition: readonly number[], currentOrientation
     }
     return [1, 2, 3, 4]
 }
-
-export default rotateReverseZig

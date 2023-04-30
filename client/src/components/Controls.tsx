@@ -1,9 +1,9 @@
 import { useSnapshot } from "valtio"
-import state from "../state"
+import { state } from "../state"
 import { closeModalWithListener } from "../utilities"
 import { useOutsideClick } from "../hooks"
 
-const Controls = () => {
+export const Controls = () => {
     const snap = useSnapshot(state)
 
     const modalRef = useOutsideClick(closeModalWithListener)
@@ -33,5 +33,3 @@ const Controls = () => {
         </div>
     )
 }
-
-export default Controls

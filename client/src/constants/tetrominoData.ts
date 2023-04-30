@@ -1,58 +1,40 @@
 import { GamePiece } from "../types";
+import { tetrominoNames } from "./tetrominoNames";
 
-const defaultPiecePositions = {
-    long: [3, 4, 5, 6],
-    square: [3, 4, 13, 14],
-    cross: [3, 4, 5, 14],
-    L: [13, 14, 15, 5],
-    reverseL: [3, 13, 14, 15],
-    zig: [3, 4, 14, 15],
-    reverseZig: [5, 4, 14, 13],
-}
-
-const pieces: Array<GamePiece> = [
+export const tetrominoData: Array<GamePiece> = [
     {
-        name: 'cross',
+        name: tetrominoNames.cross,
         defaultPosition: [3, 4, 5, 14],
         previewPosition: [11, 12, 13, 22],
     },
     {
-        name: 'L',
+        name: tetrominoNames.lShape,
         defaultPosition: [3, 4, 5, 13],
         previewPosition: [11, 12, 13, 21],
     },
     {
-        name: 'reverse L',
+        name: tetrominoNames.reverseLShape,
         defaultPosition: [3, 4, 5, 15],
         previewPosition: [11, 12, 13, 23],
     },
     {
-        name: 'long',
+        name: tetrominoNames.long,
         defaultPosition: [3, 4, 5, 6],
         previewPosition: [11, 12, 13, 14],
     },
     {
-        name: 'zig',
+        name: tetrominoNames.zigZag,
         defaultPosition: [4, 5, 15, 16],
         previewPosition: [11, 12, 22, 23],
     },
     {
-        name: 'reverse zig',
+        name: tetrominoNames.reverseZigZag,
         defaultPosition: [6, 5, 15, 14],
         previewPosition: [13, 12, 22, 21],
     },
     {
-        name: 'square',
+        name: tetrominoNames.square,
         defaultPosition: [4, 5, 14, 15],
         previewPosition: [12, 13, 22, 23],
     },
 ]
-
-const pieceOrientationArray: Array<'spawn' | 'upright' | 'reverse spawn' | 'reverse upright'> = ['spawn', 'upright', 'reverse spawn', 'reverse upright']
-
-
-export {
-    defaultPiecePositions,
-    pieces,
-    pieceOrientationArray
-};

@@ -1,7 +1,7 @@
 import { proxy } from 'valtio'
 import { GlobalState } from '../types';
 
-const state: GlobalState = proxy({
+export const state: GlobalState = proxy({
     activePieceTiles: [3, 4, 5, 13],
     gamePaused: false,
     occupiedTiles: [],
@@ -21,5 +21,3 @@ const state: GlobalState = proxy({
     gameId: 0,
     level: 0,
 })
-
-export default state;

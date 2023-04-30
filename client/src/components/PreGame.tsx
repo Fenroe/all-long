@@ -1,11 +1,11 @@
 import { useSnapshot } from "valtio"
-import state from "../state"
+import { state } from "../state"
 import { useOutsideClick } from "../hooks"
 import { closeModalWithListener, startGame } from "../utilities"
 import { MdOutlineArrowDropUp, MdOutlineArrowDropDown } from 'react-icons/md'
 import { useState } from "react"
 
-const PreGame = () => {
+export const PreGame = () => {
     const [level, setLevel] = useState(0)
 
     const snap = useSnapshot(state)
@@ -56,5 +56,3 @@ const PreGame = () => {
         </div>
     )
 }
-
-export default PreGame

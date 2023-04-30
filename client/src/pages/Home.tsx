@@ -1,8 +1,8 @@
 import { useSnapshot } from 'valtio'
-import state from '../state' 
+import { state } from '../state' 
 import { openModalWithListener } from '../utilities'
 
-const Home = () => {
+export const Home = () => {
   const snap = useSnapshot(state)
 
   const showControls = () => {
@@ -35,5 +35,3 @@ const Home = () => {
     </main>
   )
 }
-
-export default Home

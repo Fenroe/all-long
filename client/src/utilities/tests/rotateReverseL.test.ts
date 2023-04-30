@@ -1,4 +1,4 @@
-import rotateReverseL from "../rotateReverseL";
+import { rotateReverseL } from "../rotateReverseL";
 import { describe, expect, it } from 'vitest'
 
 describe('happy path', () => {

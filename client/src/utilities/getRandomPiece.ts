@@ -1,17 +1,16 @@
-import { pieces } from "./constants"
+import { tetrominoData } from "../constants"
 
-const getRandomPiece = (reroll?:boolean) => {
+export const getRandomPiece = (reroll?:boolean) => {
     if (reroll) {
         const randomNumber = Math.floor(Math.random() * 7)
-        return pieces[randomNumber]
+        return tetrominoData[randomNumber]
     } else {
         const randomNumber = Math.floor(Math.random() * 8)
         if (randomNumber === 7) {
             return false
         } else {
-            return pieces[randomNumber]
+            return tetrominoData[randomNumber]
         }
     }
 }
 
-export default getRandomPiece

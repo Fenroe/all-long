@@ -1,12 +1,11 @@
-import Tile from './Tile'
+import { Tile } from './Tile'
 import { getArrayFromNumber } from '../utilities'
+import { tilesPerGameboardRow } from '../constants'
 
-const BoardRow = ({ rowId }: {rowId: number }) => {
-    const tilesPerRow = 10
-
+export const BoardRow = ({ rowId }: {rowId: number }) => {
     return (
         <div className="flex flex-row">
-            {getArrayFromNumber(tilesPerRow).map((tile) =>
+            {getArrayFromNumber(tilesPerGameboardRow).map((tile) =>
             <Tile
             key={tile}
             id={+`${rowId}${tile}`}
@@ -14,5 +13,3 @@ const BoardRow = ({ rowId }: {rowId: number }) => {
         </div>
     )
 }
-
-export default BoardRow

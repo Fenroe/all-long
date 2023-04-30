@@ -1,7 +1,7 @@
 import { useSnapshot } from "valtio"
-import state from "../state"
+import { state } from "../state"
 
-const PreviewTile = ({ id } : { id: number }) => {
+export const PreviewTile = ({ id } : { id: number }) => {
     const snap = useSnapshot(state)
 
     const previewCheckForColour = () => {
@@ -11,5 +11,3 @@ const PreviewTile = ({ id } : { id: number }) => {
         <div className="w-8 h-8 tile" style={ previewCheckForColour() ? { backgroundColor: '#9394a5', border: '1px solid gray', borderBottom: 'none' } : {}}></div>
     )
 }
-
-export default PreviewTile

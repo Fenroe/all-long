@@ -1,0 +1,1 @@
+export const numberOfGameboardRows:number = 18

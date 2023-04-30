@@ -1,6 +1,6 @@
-import sortCoordinatesArray from "./sortCoordinatesArray"
+import { sortCoordinatesArray } from "./sortCoordinatesArray"
 
-const rotateReverseL = (currentPosition: readonly number[], currentOrientation: 'spawn' | 'upright' | 'reverse spawn' | 'reverse upright') => {
+export const rotateReverseL = (currentPosition: readonly number[], currentOrientation: 'spawn' | 'upright' | 'reverse spawn' | 'reverse upright') => {
     const currentPositionCopy = sortCoordinatesArray(currentPosition)
     if (currentOrientation === 'spawn') {
         const secondCoordinate = currentPositionCopy[1]
@@ -32,5 +32,3 @@ const rotateReverseL = (currentPosition: readonly number[], currentOrientation: 
     }
     return [1, 2, 3, 4]
 }
-
-export default rotateReverseL

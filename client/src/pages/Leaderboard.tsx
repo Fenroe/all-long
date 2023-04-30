@@ -1,8 +1,8 @@
 import { useSnapshot } from 'valtio'
-import state from '../state'
+import { state } from '../state'
 import { getLevel } from '../utilities'
 
-const Leaderboard = () => {
+export const Leaderboard = () => {
     const snap = useSnapshot(state)
 
     return (
@@ -13,5 +13,3 @@ const Leaderboard = () => {
         
     )
 }
-
-export default Leaderboard

@@ -1,10 +1,8 @@
 import { useSnapshot } from "valtio"
-import GameBoard from "../components/GameBoard"
-import GameInfo from "../components/GameInfo"
-import state from "../state"
-import PauseMenu from "../components/PauseMenu"
+import { state } from "../state"
+import { GameBoard, GameInfo } from "../components/"
 
-const Game = () => {
+export const Game = () => {
   const snap = useSnapshot(state)
 
   return (
@@ -16,5 +14,3 @@ const Game = () => {
     </main>
   )
 }
-
-export default Game

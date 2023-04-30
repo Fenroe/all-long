@@ -1,4 +1,4 @@
-import rotateL from "../rotateL";
+import { rotateL } from "../rotateL";
 import { describe, it, expect } from 'vitest'
 
 describe('happy path', () => {

@@ -1,10 +1,11 @@
-import state from "../state"
+import { state } from "../state"
 import { GamePiece } from "../types"
-import getRandomPiece from "./getRandomPiece"
+import { getRandomPiece } from "./getRandomPiece"
+import { defaultScore } from "../constants"
 
 export const startGame = (level:number) => {
     state.occupiedTiles = []
-    state.score = 0
+    state.score = defaultScore
     state.lines = 0
     state.level = level
     state.dropPoints = 0

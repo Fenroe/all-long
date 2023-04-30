@@ -1,4 +1,4 @@
-import rotateCross from "../rotateCross";
+import { rotateCross } from "../rotateCross";
 import { describe, expect, it } from 'vitest'
 
 describe('happy path', () => {

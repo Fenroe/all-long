@@ -1,9 +1,10 @@
 import { useSnapshot } from "valtio"
-import state from "../state"
+import { state } from "../state"
 import { useState, useEffect, useRef } from "react"
 import { UserScore } from "../types"
+import { localStorageKeys } from "../constants"
 
-const PostGame = () => {
+export const PostGame = () => {
     const snap = useSnapshot(state)
 
     const [newHighScore, setNewHighScore] = useState(false)
@@ -23,7 +24,7 @@ const PostGame = () => {
         }
         const newLocalScores = [...remainingScores, updatedScore].sort((a, b) => b.score - a.score)
         state.localScores = newLocalScores
-        localStorage.setItem('localScores', JSON.stringify(newLocalScores))
+        localStorage.setItem(localStorageKeys.localScores, JSON.stringify(newLocalScores))
     }
 
     const handleSaveScore = () => {
@@ -60,5 +61,3 @@ const PostGame = () => {
         </div>
     )
 }
-
-export default PostGame

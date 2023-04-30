@@ -1,17 +1,16 @@
 import { useSnapshot } from 'valtio'
 import { getArrayFromNumber } from '../utilities'
-import PreviewRow from './PreviewRow'
-import state from '../state'
+import { PreviewRow } from './PreviewRow'
+import { state } from '../state'
 import { openModalWithListener } from '../utilities'
+import { modalContentsValues, numberOfPreviewRows } from '../constants'
 
-const GameInfo = () => {
+export const GameInfo = () => {
     const snap = useSnapshot(state)
-
-    const rows = 4
 
     const openPauseMenu = () => {
         state.gamePaused = true
-        state.modalContents = 'Pause'
+        state.modalContents = modalContentsValues.pauseMenu
         openModalWithListener()
     }
 
@@ -20,7 +19,7 @@ const GameInfo = () => {
             <div className="bg-inherit flex sm:flex-col">
                 <div className="bg-inherit">
                     <h2 className="text-center text-3xl font-bold mb-2 bg-inherit">Next</h2>
-                    {getArrayFromNumber(rows).map((row) =>
+                    {getArrayFromNumber(numberOfPreviewRows).map((row) =>
                     <PreviewRow 
                     key={row}
                     rowId={row}
@@ -45,5 +44,3 @@ const GameInfo = () => {
         </div>
     )
 }
-
-export default GameInfo

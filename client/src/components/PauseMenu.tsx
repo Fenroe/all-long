@@ -1,11 +1,11 @@
 import { useEffect } from "react"
 import { useSnapshot } from "valtio"
-import state from "../state"
+import { state } from "../state"
 import { closeModalWithListener, startGame } from "../utilities"
 import { useOutsideClick } from "../hooks"
 import { useState } from "react"
 
-const PauseMenu = () => {
+export const PauseMenu = () => {
     const [menuView, setMenuView] = useState('Menu')
 
     const snap = useSnapshot(state)
@@ -55,5 +55,3 @@ const PauseMenu = () => {
         </div>
     )
 }
-
-export default PauseMenu
