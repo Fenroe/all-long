@@ -49,14 +49,14 @@ export const PostGame = () => {
                 {newHighScore && <h2 className="text-3xl text-center font-bold">This is your new high score!</h2>}
                 <form onSubmit={(evt) => evt.preventDefault()}className="w-full flex flex-col justify-center items-center gap-3">
                     <label htmlFor="name" className="text-2xl font-bold text-center w-full">Enter your name</label>
-                    <input ref={nameRef} defaultValue="Tett" type="text" id="name" className="border rounded-full text-2xl text-center bg-white p-2"/>
+                    <input ref={nameRef} defaultValue="Tett" type="text" id="name" className="w-full border rounded-md text-2xl text-center bg-white p-2"/>
                     <button className="modal-button" onClick={handleSaveScore}>Save Score</button>
                 </form>
             </>}
             {scoreSaved &&
             <>
                 <h2 className="text-3xl text-center font-bold">Your score has been saved{newHighScore ? ' and submitted to the leaderboard.' : '.'}</h2>
-                <button className="text-3xl w-full h-14 rounded-md border-2 border-black primary-button" onClick={handleClose}>Close</button>
+                <button className="modal-button" onClick={handleClose}>Close</button>
             </>}
         </div>
     )

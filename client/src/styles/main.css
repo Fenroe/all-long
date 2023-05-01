@@ -9,6 +9,18 @@
     .modal-button {
         @apply w-full h-16 font-bold border-black border rounded-lg text-2xl uppercase mb-2 transition hover:bg-black hover:text-white focus:bg-black focus:text-white
     }
+
+    .controls-section {
+        @apply flex flex-col w-1/2 p-3 gap-6
+    }
+
+    .controls-key {
+        @apply text-xl font-bold
+    }
+
+    .controls-value {
+        @apply text-xl
+    }
 }
 @font-face {
     font-family: Designer-Block;
@@ -33,22 +45,6 @@
 
 .tile {
     background-color: #e4e5f1;
-}
-
-.primary-button {
-    opacity: 1;
-    transition-property: transform;
-    transition-duration: .2s;
-    transition-timing-function: linear;
-}
-
-.primary-button:hover, .primary-button:focus {
-    transform: scale(1.05);
-    color: #e4e5f1;
-    animation-duration: .2s;
-    animation-name: button-color-change;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
 }
 
 .modal-background {
@@ -84,14 +80,4 @@
     z-index: 2;
     isolation: isolate;
 
-}
-
-@keyframes button-color-change {
-    from {
-        background-color: #fafafa;
-    }
-
-    to {
-        background-color: black;
-    }
 }

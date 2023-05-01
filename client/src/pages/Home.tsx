@@ -1,24 +1,28 @@
 import { useSnapshot } from 'valtio'
 import { state } from '../state' 
 import { openModalWithListener } from '../utilities'
+import { modalContentsValues } from '../constants'
 
 export const Home = () => {
   const snap = useSnapshot(state)
 
   const showControls = () => {
-    state.modalContents = 'Controls'
+    if (snap.showModal) return
+    state.modalContents = modalContentsValues.controls
     state.outro = false
     openModalWithListener()
   }
 
   const showScores = () => {
-    state.modalContents = 'Scores'
+    if (snap.showModal) return
+    state.modalContents = modalContentsValues.scores
     state.outro = false
     openModalWithListener()
   }
 
   const showPreGame = () => {
-    state.modalContents = 'Pre Game'
+    if (snap.showModal) return
+    state.modalContents = modalContentsValues.levelSelect
     state.outro = false
     openModalWithListener()
   }

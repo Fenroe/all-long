@@ -8,7 +8,11 @@ import { keyboardButtonCodes } from "./keyboardButtonCodes";
 import { numberOfGameboardRows } from "./numberOfGameboardRows";
 import { tilesPerGameboardRow } from "./tilesPerGameboardRow";
 import { numberOfPreviewRows } from "./numberOfPreviewRows";
+import { tilesPerPreviewRow } from "./tilesPerPreviewRow";
 import { defaultScore } from "./defaultScore";
+import { minimumStartingLevel } from "./minimumStartingLevel";
+import { maximumStartingLevel } from "./maximumStartingLevel";
+import { conditionalModalStyles } from "./conditionalModalStyles";
 
 export {
     tetrominoData,
@@ -21,5 +25,9 @@ export {
     numberOfGameboardRows,
     tilesPerGameboardRow,
     numberOfPreviewRows,
+    tilesPerPreviewRow,
     defaultScore,
+    minimumStartingLevel,
+    maximumStartingLevel,
+    conditionalModalStyles,
 }
