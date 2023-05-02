@@ -21,17 +21,6 @@ export const GameBoard = () => {
 
     const snap = useSnapshot(state)
 
-    const processScore = () => {
-        const newScore:UserScore = {
-            id: snap.gameId,
-            name: defaultUserName,
-            score: snap.score
-        }
-        const localScores = [...snap.localScores, newScore].sort((a, b) => b.score - a.score)
-        state.localScores = localScores
-        localStorage.setItem(localStorageKeys.localScores, JSON.stringify(localScores))
-    }
-
     const openPauseMenu = () => {
         state.gamePaused = true
         state.modalContents = modalContentsValues.pauseMenu
@@ -111,8 +100,8 @@ export const GameBoard = () => {
         state.pieceOrientation = tetrominoOrientation[0]
         const gameOverCheck = nextPieceTilesArray.filter((coordinate) => occupiedTileReference.includes(coordinate))
         if (gameOverCheck.length > 0) {
-            processScore()
-            state.outro = true
+            state.gamePaused = true
+            state.modalContents = modalContentsValues.scoreSubmission
             state.showModal = true
         }
     }

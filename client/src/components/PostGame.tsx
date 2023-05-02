@@ -1,8 +1,8 @@
 import { useSnapshot } from "valtio"
 import { state } from "../state"
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import { UserScore } from "../types"
-import { localStorageKeys } from "../constants"
+import { defaultUserName, localStorageKeys, maximumNameLength, minimumNameLength, pageContentsValues } from "../constants"
 
 export const PostGame = () => {
     const snap = useSnapshot(state)
@@ -11,34 +11,42 @@ export const PostGame = () => {
 
     const [scoreSaved, setScoreSaved] = useState(false)
 
-    const nameRef = useRef<HTMLInputElement>(null)
+    const [username, setUsername] = useState(defaultUserName)
 
-    const updateName = () => {
-        if (!nameRef.current || nameRef.current.value === '') return
-        const newName = nameRef.current.value
-        const remainingScores = snap.localScores.filter((score) => score.id !== snap.gameId)
-        const updatedScore:UserScore = {
+    const updateUsername = (evt:any) => {
+        const newName:string = evt.target.value
+        if (newName.length > maximumNameLength || newName.length < minimumNameLength   ) return
+        setUsername(newName)
+    }
+
+    const checkForInvalidUsername = () => {
+        return username === ''
+    }
+
+    const saveScore = () => {
+        if (checkForInvalidUsername()) return
+        const newScore:UserScore = {
             id: snap.gameId,
-            name: newName,
-            score: snap.score,
+            name: username,
+            score: snap.score
         }
-        const newLocalScores = [...remainingScores, updatedScore].sort((a, b) => b.score - a.score)
-        state.localScores = newLocalScores
-        localStorage.setItem(localStorageKeys.localScores, JSON.stringify(newLocalScores))
+        const localScores = [...snap.localScores, newScore].sort((a, b) => b.score - a.score)
+        state.localScores = localScores
+        localStorage.setItem(localStorageKeys.localScores, JSON.stringify(localScores))
     }
 
     const handleSaveScore = () => {
+        saveScore()
         setScoreSaved(true)
     }
 
     const handleClose = () => {
-        updateName()
         state.showModal = false
-        state.intro = true
+        state.pageContent = pageContentsValues.home
     }
 
     useEffect(() => {
-        setNewHighScore(snap.localScores[0].id === snap.gameId)
+        setNewHighScore(snap.localScores[0].score < snap.score)
     }, [])
 
     return (
@@ -49,8 +57,8 @@ export const PostGame = () => {
                 {newHighScore && <h2 className="text-3xl text-center font-bold">This is your new high score!</h2>}
                 <form onSubmit={(evt) => evt.preventDefault()}className="w-full flex flex-col justify-center items-center gap-3">
                     <label htmlFor="name" className="text-2xl font-bold text-center w-full">Enter your name</label>
-                    <input ref={nameRef} defaultValue="Tett" type="text" id="name" className="w-full border rounded-md text-2xl text-center bg-white p-2"/>
-                    <button className="modal-button" onClick={handleSaveScore}>Save Score</button>
+                    <input value={username} type="text" id="name" onChange={updateUsername} className="w-full border rounded-md text-2xl text-center bg-white p-2"/>
+                    <button className="modal-button" onClick={handleSaveScore} disabled={checkForInvalidUsername()}>Save Score</button>
                 </form>
             </>}
             {scoreSaved &&

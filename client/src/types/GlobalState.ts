@@ -7,6 +7,7 @@ export interface GlobalState {
     nextPieceTiles: number[];
     pieceOrientation: 'spawn' | 'upright' | 'reverse spawn' | 'reverse upright';
     pieceType: string;
+    pageContent: string;
     intro: boolean;
     outro: boolean;
     score: number;
@@ -19,4 +20,5 @@ export interface GlobalState {
     localScores: Array<UserScore>;
     gameId: number;
     level: number;
+    gameFinished: boolean;
 }

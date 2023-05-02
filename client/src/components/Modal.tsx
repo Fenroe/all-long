@@ -14,9 +14,6 @@ export const Modal = () => {
     const snap = useSnapshot(state)
 
     const renderModalContents = () => {
-        if (snap.outro) {
-            return <PostGame />
-        }
         switch(snap.modalContents) {
             case modalContentsValues.controls:
                 return <Controls />
@@ -26,6 +23,8 @@ export const Modal = () => {
                 return <PauseMenu />
             case modalContentsValues.levelSelect:
                 return <PreGame />
+            case modalContentsValues.scoreSubmission:
+                return <PostGame />
             default:
                 return <Controls />
         }

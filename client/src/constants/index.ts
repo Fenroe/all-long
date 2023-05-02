@@ -13,6 +13,9 @@ import { defaultScore } from "./defaultScore";
 import { minimumStartingLevel } from "./minimumStartingLevel";
 import { maximumStartingLevel } from "./maximumStartingLevel";
 import { conditionalModalStyles } from "./conditionalModalStyles";
+import { minimumNameLength } from "./minimumNameLength";
+import { maximumNameLength } from "./maximumNameLength";
+import { pageContentsValues } from "./pageContentsValues";
 
 export {
     tetrominoData,
@@ -30,4 +33,7 @@ export {
     minimumStartingLevel,
     maximumStartingLevel,
     conditionalModalStyles,
+    minimumNameLength,
+    maximumNameLength,
+    pageContentsValues,
 }

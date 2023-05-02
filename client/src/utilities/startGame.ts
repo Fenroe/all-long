@@ -1,7 +1,7 @@
 import { state } from "../state"
 import { GamePiece } from "../types"
 import { getRandomPiece } from "./getRandomPiece"
-import { defaultScore } from "../constants"
+import { defaultScore, pageContentsValues } from "../constants"
 
 export const startGame = (level:number) => {
     state.occupiedTiles = []
@@ -19,6 +19,5 @@ export const startGame = (level:number) => {
     state.nextPieceType = nextPiece.name
     state.previewPieceTiles = nextPiece.previewPosition
     state.gameId = Date.now()
-    state.outro = false
-    state.intro = false
+    state.pageContent = pageContentsValues.game
   }
