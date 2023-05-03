@@ -8,6 +8,6 @@ export const PreviewTile = ({ id } : { id: number }) => {
         return snap.previewPieceTiles.includes(id)
     }
     return (
-        <div className="w-8 h-8 tile" style={ previewCheckForColour() ? { backgroundColor: '#9394a5', border: '1px solid gray', borderBottom: 'none' } : {}}></div>
+        <div className={snap.darkMode ? "gametile-dark" : "gametile"} style={ previewCheckForColour() ? { backgroundColor: '#9394a5', border: '1px solid gray', borderBottom: 'none' } : {}}></div>
     )
 }

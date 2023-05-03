@@ -32,7 +32,7 @@ export const Modal = () => {
 
     return ReactDOM.createPortal(
         <>
-            <div className="modal-background" style={snap.showModal ? { visibility: 'visible', opacity: '1' } : {}}/>
+            <div className={snap.darkMode ? "modal-background-dark":"modal-background"} style={snap.showModal ? { visibility: 'visible', opacity: '1' } : {}}/>
             <FocusLock>
                 {renderModalContents()}
             </FocusLock>

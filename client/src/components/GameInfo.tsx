@@ -15,7 +15,7 @@ export const GameInfo = () => {
     }
 
     return (
-        <div className="h-[576px] flex justify-between items-center bg-[#d2d3db] px-9 py-6 flex-col">
+        <div className={snap.darkMode ? 'gameinfo-dark' : 'gameinfo'}>
             <div className="bg-inherit flex sm:flex-col">
                 <div className="bg-inherit">
                     <h2 className="text-center text-3xl font-bold mb-2 bg-inherit">Next</h2>
@@ -25,7 +25,7 @@ export const GameInfo = () => {
                     rowId={row}
                     />)}
                 </div>
-                <div className="w-48 flex flex-col gap-3 text-2xl p-6 rounded-xl bg-[#e4e5f1]">
+                <div className={snap.darkMode ? 'gamestats-dark' : 'gamestats'}>
                     <div className="flex justify-between w-full bg-inherit">
                         <span className="font-bold bg-inherit">Level</span>
                         <span className="bg-inherit">{snap.level}</span>
@@ -40,7 +40,7 @@ export const GameInfo = () => {
                     </div>
                 </div>
             </div>
-            <button className="text-2xl w-full h-12 rounded-lg border font-bold bg-[#e4e5f1]" onClick={openPauseMenu}>Pause</button>
+            <button className={snap.darkMode ? "gamepause-dark" : "gamepause"} onClick={openPauseMenu}>Pause</button>
         </div>
     )
 }

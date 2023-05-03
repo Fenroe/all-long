@@ -50,21 +50,21 @@ export const PostGame = () => {
     }, [])
 
     return (
-        <div className="modal relative flex flex-col items-center justify-center gap-6" style={snap.showModal ? { visibility: 'visible', transform: 'translate(-50%, -50%)', opacity: '1' } : {}}>
+        <div className={snap.darkMode ? "scoresubmission-dark" : "scoresubmission"} style={snap.showModal ? { visibility: 'visible', transform: 'translate(-50%, -50%)', opacity: '1' } : {}}>
             {!scoreSaved &&
             <>
                 <h2 className="text-3xl text-center font-bold">You scored a total of {snap.score} points</h2>
                 {newHighScore && <h2 className="text-3xl text-center font-bold">This is your new high score!</h2>}
                 <form onSubmit={(evt) => evt.preventDefault()}className="w-full flex flex-col justify-center items-center gap-3">
                     <label htmlFor="name" className="text-2xl font-bold text-center w-full">Enter your name</label>
-                    <input value={username} type="text" id="name" onChange={updateUsername} className="w-full border rounded-md text-2xl text-center bg-white p-2"/>
-                    <button className="modal-button" onClick={handleSaveScore} disabled={checkForInvalidUsername()}>Save Score</button>
+                    <input value={username} type="text" id="name" onChange={updateUsername} className="w-full border rounded-md text-2xl text-center bg-white p-2 text-black"/>
+                    <button className={snap.darkMode ? "modal-button-dark" : "modal-button"} onClick={handleSaveScore} disabled={checkForInvalidUsername()}>Save Score</button>
                 </form>
             </>}
             {scoreSaved &&
             <>
                 <h2 className="text-3xl text-center font-bold">Your score has been saved{newHighScore ? ' and submitted to the leaderboard.' : '.'}</h2>
-                <button className="modal-button" onClick={handleClose}>Close</button>
+                <button className={snap.darkMode ? "modal-button-dark" : "modal-button"} onClick={handleClose}>Close</button>
             </>}
         </div>
     )

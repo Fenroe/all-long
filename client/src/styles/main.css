@@ -4,10 +4,19 @@
 
 @layer utilities {
     .button {
-        @apply w-56 h-16 border-black border rounded-lg text-4xl uppercase mb-2 transition hover:bg-black hover:text-white hover:scale-110 focus:bg-black focus:text-white focus:scale-110
+        @apply font-sans font-bold w-56 h-16 border-black border rounded-lg text-3xl uppercase mb-2 transition hover:bg-black hover:text-white hover:scale-110 focus:bg-black focus:text-white focus:scale-110
     }
+
+    .button-dark {
+        @apply font-sans font-bold w-56 h-16 border rounded-lg text-3xl uppercase mb-2 transition bg-black text-[#fafafa] hover:bg-[#fafafa] hover:text-black hover:scale-110 focus:bg-[#fafafa] focus:text-black focus:scale-110
+    }
+
     .modal-button {
         @apply w-full h-16 font-bold border-black border rounded-lg text-2xl uppercase mb-2 transition hover:bg-black hover:text-white focus:bg-black focus:text-white
+    }
+
+    .modal-button-dark {
+        @apply w-full h-16 font-bold border-black border rounded-lg text-2xl uppercase mb-2 transition bg-black hover:bg-[#fafafa] hover:text-black focus:bg-black focus:text-white
     }
 
     .controls-section {
@@ -18,8 +27,112 @@
         @apply text-xl font-bold
     }
 
+    .levelselect {
+        @apply modal relative flex flex-col items-center justify-around
+    }
+
+    .levelselect-dark {
+        @apply modal-dark relative flex flex-col items-center justify-around text-[#fafafa]
+    }
+
+    .app-title {
+        @apply text-8xl uppercase mb-10
+    }
+
+    .app-title-dark {
+        @apply text-8xl uppercase mb-10 text-[#fafafa]
+    }
+
+    .page {
+        @apply w-screen h-screen flex flex-col justify-center items-center home
+    }
+
+    .page-dark {
+        @apply w-screen h-screen flex flex-col justify-center items-center home-dark
+    }
+
     .controls-value {
         @apply text-xl
+    }
+
+    .modal-container {
+        @apply modal relative flex flex-col items-center justify-around
+    }
+
+    .modal-container-dark {
+        @apply modal-dark relative flex flex-col items-center justify-around text-white
+    }
+
+    .game {
+        @apply w-screen h-screen flex justify-center items-center
+    }
+
+    .game-dark {
+        @apply w-screen h-screen flex justify-center items-center bg-[#191610] text-[#fafafa]
+    }
+
+    .leaderboard {
+        @apply flex flex-col items-center w-screen h-screen bg-[#fafafa]
+    }
+
+    .leaderboard-dark {
+        @apply flex flex-col items-center w-screen h-screen bg-[#191610] text-[#fafafa]
+    }
+
+    .scores-container {
+        @apply flex flex-col w-full items-center gap-3 px-10 py-7 border max-h-96 overflow-y-scroll xl:max-h-[500px]
+    }
+
+    .scores-container-dark {
+        @apply flex flex-col w-full items-center gap-3 px-10 py-7 border max-h-96 overflow-y-scroll bg-black xl:max-h-[500px]
+    }
+
+    .gametile {
+        @apply tile w-8 h-8
+    }
+
+    .gametile-dark {
+        @apply tile-dark w-8 h-8
+    }
+
+    .gameinfo {
+        @apply h-[576px] flex justify-between items-center bg-[#d2d3db] px-9 py-6 flex-col
+    }
+
+    .gameinfo-dark {
+        @apply h-[576px] flex justify-between items-center bg-[#212121] px-9 py-6 flex-col
+    }
+
+    .compactinfo {
+        @apply w-full flex bg-[#d2d3db] text-xl font-mono
+    }
+
+    .compactinfo-dark {
+        @apply w-full flex bg-[#212121] text-xl font-mono
+    }
+
+    .gamestats {
+        @apply w-48 flex flex-col gap-3 text-2xl p-6 rounded-xl bg-[#e4e5f1] font-mono
+    }
+
+    .gamestats-dark {
+        @apply w-48 flex flex-col gap-3 text-2xl p-6 rounded-xl bg-[#3d3d3d] font-mono
+    }
+
+    .gamepause {
+        @apply text-2xl w-full h-12 rounded-lg border font-bold bg-[#e4e5f1]
+    }
+
+    .gamepause-dark {
+        @apply text-2xl w-full h-12 rounded-lg border-[#3d3d3d] font-bold bg-[#3d3d3d]
+    }
+
+    .scoresubmission {
+        @apply modal relative flex flex-col items-center justify-center gap-6
+    }
+
+    .scoresubmission-dark {
+        @apply modal-dark relative flex flex-col items-center justify-center gap-6 text-[#fafafa]
     }
 }
 @font-face {
@@ -27,12 +140,13 @@
     src: url('../assets/Designer-Block.TTF');
 }
 
-* {
+.home {
     background-color: #fafafa;
 }
 
-.home {
-    background-color: #fafafa;
+.home-dark {
+    background-color: #191610;
+    color: #fafafa;
 }
 
 .home-play-container {
@@ -47,6 +161,10 @@
     background-color: #e4e5f1;
 }
 
+.tile-dark {
+    background-color: #3d3d3d;
+}
+
 .modal-background {
     position: absolute;
     top: 0;
@@ -58,7 +176,19 @@
     opacity: 0;
     transition-property: visibility, opacity;
     transition-duration: .2s;
+}
 
+.modal-background-dark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 100vw;
+    height: 100vh;
+    visibility: hidden;
+    opacity: 0;
+    transition-property: visibility, opacity;
+    transition-duration: .2s;
 }
 
 .modal {
@@ -79,5 +209,24 @@
     opacity: 0;
     z-index: 2;
     isolation: isolate;
+}
 
+.modal-dark {
+    border-radius: 1rem;
+    width: 20rem;
+    aspect-ratio: 10/16;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #191610;
+    padding: 1rem;
+    transform: translate(-50%, -45%);
+    transition-property: visibility, transform, opacity;
+    transition-duration: 0s, .2s, .2s;
+    transition-timing-function: linear;
+    transition-delay: .1s, 0s, 0s;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 2;
+    isolation: isolate;
 }

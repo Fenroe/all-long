@@ -9,7 +9,7 @@ export const Controls = () => {
     const modalRef = useOutsideClick(closeModalWithListener)
     
     return (
-        <div ref={modalRef} className="modal relative flex flex-col items-center justify-around" style={snap.showModal ? { visibility: 'visible', transform: 'translate(-50%, -50%)', opacity: '1' } : {}}>
+        <div ref={modalRef} className={snap.darkMode ? "modal-container-dark" : "modal-container"} style={snap.showModal ? { visibility: 'visible', transform: 'translate(-50%, -50%)', opacity: '1' } : {}}>
             <h1 className="text-4xl text-center mt-6 font-bold">Controls</h1>
             <section className="flex w-full h-full items-center">
                 <div className="controls-section items-end">
@@ -29,7 +29,7 @@ export const Controls = () => {
                     <span className="controls-value">Pause</span>
                 </div>
             </section>
-            <button className="modal-button" onClick={closeModalWithListener}>Close</button>
+            <button className={snap.darkMode ? "modal-button-dark": "modal-button"} onClick={closeModalWithListener}>Close</button>
         </div>
     )
 }

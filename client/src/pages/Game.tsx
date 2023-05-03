@@ -1,15 +1,19 @@
 import { useSnapshot } from "valtio"
 import { state } from "../state"
-import { GameBoard, GameInfo } from "../components/"
+import { GameBoard, GameInfo, CompactGameInfo } from "../components/"
+import { useWindowSize } from "../hooks"
 
 export const Game = () => {
   const snap = useSnapshot(state)
 
+  const screenSize = useWindowSize()
+
   return (
-    <main className="w-screen h-screen flex justify-center items-center">
+    <main className={snap.darkMode ? "game-dark":"game"}>
       <div className="flex justify-center items-center rounded-xl flex-col max-h-screen sm:flex-row">
+        {screenSize.width < 640 && <CompactGameInfo />}
         <GameBoard />
-        <GameInfo />
+        {screenSize.width >= 640 && <GameInfo />}
       </div>
     </main>
   )

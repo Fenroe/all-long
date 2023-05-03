@@ -10,6 +10,7 @@ import { PreviewRow } from "./PreviewRow";
 import { PreviewTile } from "./PreviewTile";
 import { Scores } from "./Scores";
 import { Tile } from "./Tile";
+import { CompactGameInfo } from "./CompactGameInfo";
 
 export {
     BoardRow,
@@ -24,4 +25,5 @@ export {
     PreviewTile,
     Scores,
     Tile,
+    CompactGameInfo,
 }

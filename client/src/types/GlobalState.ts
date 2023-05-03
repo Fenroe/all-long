@@ -21,4 +21,5 @@ export interface GlobalState {
     gameId: number;
     level: number;
     gameFinished: boolean;
+    darkMode: boolean;
 }

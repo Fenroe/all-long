@@ -23,4 +23,5 @@ export const state: GlobalState = proxy({
     gameId: 0,
     level: 0,
     gameFinished: false,
+    darkMode: false,
 })
