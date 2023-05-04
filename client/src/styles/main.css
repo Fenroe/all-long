@@ -142,6 +142,14 @@
     .scoresubmission-dark {
         @apply modal-dark relative flex flex-col items-center justify-center gap-6 text-[#fafafa]
     }
+
+    .scoresubmissioninput {
+        @apply w-full border rounded-md text-2xl text-center bg-white p-2 text-black
+    }
+
+    .scoresubmissioninput-dark {
+        @apply w-full border rounded-md text-2xl text-center bg-black p-2 text-white
+    }
 }
 @font-face {
     font-family: Designer-Block;

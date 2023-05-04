@@ -57,7 +57,7 @@ export const PostGame = () => {
                 {newHighScore && <h2 className="text-3xl text-center font-bold">This is your new high score!</h2>}
                 <form onSubmit={(evt) => evt.preventDefault()}className="w-full flex flex-col justify-center items-center gap-3">
                     <label htmlFor="name" className="text-2xl font-bold text-center w-full">Enter your name</label>
-                    <input value={username} type="text" id="name" onChange={updateUsername} className="w-full border rounded-md text-2xl text-center bg-white p-2 text-black"/>
+                    <input value={username} type="text" id="name" onChange={updateUsername} className={snap.darkMode ? "scoresubmissioninput-dark":"scoresubmissioninput"}/>
                     <button className={snap.darkMode ? "modal-button-dark" : "modal-button"} onClick={handleSaveScore} disabled={checkForInvalidUsername()}>Save Score</button>
                 </form>
             </>}
