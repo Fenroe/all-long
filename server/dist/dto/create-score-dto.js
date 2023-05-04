@@ -17,8 +17,8 @@ class CreateScoreDto {
 }
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MinLength)(0),
-    (0, class_validator_1.MaxLength)(10),
+    (0, class_validator_1.MinLength)(minimumNameLength),
+    (0, class_validator_1.MaxLength)(maximumNameLength),
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", String)
 ], CreateScoreDto.prototype, "name", void 0);
@@ -37,9 +37,5 @@ __decorate([
     (0, class_validator_1.IsNotEmpty)(),
     __metadata("design:type", Number)
 ], CreateScoreDto.prototype, "level", void 0);
-__decorate([
-    (0, class_validator_1.IsDate)(),
-    __metadata("design:type", Date)
-], CreateScoreDto.prototype, "date", void 0);
 exports.CreateScoreDto = CreateScoreDto;
 //# sourceMappingURL=create-score-dto.js.map

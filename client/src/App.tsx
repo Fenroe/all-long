@@ -5,8 +5,11 @@ import { useSnapshot } from 'valtio'
 import { state } from './state'
 import { Modal } from './components/Modal'
 import { localStorageKeys, pageContentsValues } from './constants'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 function App() {
+  const queryClient = new QueryClient()
+
   const snap = useSnapshot(state)
 
   const renderPageContents = () => {
@@ -32,10 +35,12 @@ function App() {
     }
   }, [])
   return (
-    <div className="container">
-      <Modal />
-      {renderPageContents()}
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="container">
+        <Modal />
+        {renderPageContents()}
+      </div>
+    </QueryClientProvider>
   )
 }
 

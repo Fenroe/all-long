@@ -3,6 +3,8 @@ import { state } from "../state"
 import { useState, useEffect } from "react"
 import { UserScore } from "../types"
 import { defaultUserName, localStorageKeys, maximumNameLength, minimumNameLength, pageContentsValues } from "../constants"
+import { postNewScore } from "../utilities"
+import { ClipLoader } from "react-spinners"
 
 export const PostGame = () => {
     const snap = useSnapshot(state)
@@ -13,9 +15,11 @@ export const PostGame = () => {
 
     const [username, setUsername] = useState(defaultUserName)
 
+    const [loading, setLoading] = useState(false)
+
     const updateUsername = (evt:any) => {
         const newName:string = evt.target.value
-        if (newName.length > maximumNameLength || newName.length < minimumNameLength   ) return
+        if (newName.length > maximumNameLength || newName.length < minimumNameLength) return
         setUsername(newName)
     }
 
@@ -35,9 +39,15 @@ export const PostGame = () => {
         localStorage.setItem(localStorageKeys.localScores, JSON.stringify(localScores))
     }
 
-    const handleSaveScore = () => {
+    const handleSaveScore = async () => {
+        if (loading) return
+        setLoading(true)
         saveScore()
+        if (newHighScore) {
+            await postNewScore(snap.score, username, snap.lines, snap.level)
+        }
         setScoreSaved(true)
+        setLoading(false)
     }
 
     const handleClose = () => {
@@ -46,7 +56,7 @@ export const PostGame = () => {
     }
 
     useEffect(() => {
-        setNewHighScore(snap.localScores[0].score < snap.score)
+        setNewHighScore(snap.localScores.length === 0 || snap.localScores[0].score < snap.score)
     }, [])
 
     return (
@@ -58,7 +68,7 @@ export const PostGame = () => {
                 <form onSubmit={(evt) => evt.preventDefault()}className="w-full flex flex-col justify-center items-center gap-3">
                     <label htmlFor="name" className="text-2xl font-bold text-center w-full">Enter your name</label>
                     <input value={username} type="text" id="name" onChange={updateUsername} className={snap.darkMode ? "scoresubmissioninput-dark":"scoresubmissioninput"}/>
-                    <button className={snap.darkMode ? "modal-button-dark" : "modal-button"} onClick={handleSaveScore} disabled={checkForInvalidUsername()}>Save Score</button>
+                    <button className={snap.darkMode ? "modal-button-dark" : "modal-button"} onClick={handleSaveScore} disabled={checkForInvalidUsername()}>{loading ? <ClipLoader color={snap.darkMode ? "#fafafa" : "ffffff"} /> : "Save Score"}</button>
                 </form>
             </>}
             {scoreSaved &&

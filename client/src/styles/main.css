@@ -4,19 +4,19 @@
 
 @layer utilities {
     .button {
-        @apply font-sans font-bold w-56 h-16 border-black border rounded-lg text-3xl uppercase mb-2 transition hover:bg-black hover:text-white hover:scale-110 focus:bg-black focus:text-white focus:scale-110
+        @apply font-sans font-bold w-56 h-16 border-black border rounded-lg text-3xl uppercase mb-2 transition bg-[#fafafa] brightness-100 hover:brightness-95 focus:brightness-95 focus:scale-110
     }
 
     .button-dark {
-        @apply font-sans font-bold w-56 h-16 border rounded-lg text-3xl uppercase mb-2 transition bg-black text-[#fafafa] hover:bg-[#fafafa] hover:text-black hover:scale-110 focus:bg-[#fafafa] focus:text-black focus:scale-110
+        @apply font-sans font-bold w-56 h-16 border rounded-lg text-3xl uppercase mb-2 transition text-[#fafafa] bg-[#0c0c0c] brightness-100     hover:brightness-125 focus:brightness-125 focus:scale-110
     }
 
     .modal-button {
-        @apply w-full h-16 font-bold border-black border rounded-lg text-2xl uppercase mb-2 transition hover:bg-black hover:text-white focus:bg-black focus:text-white
+        @apply w-full h-16 font-bold border-black border rounded-lg text-2xl flex justify-center items-center uppercase mb-2 transition bg-[#fafafa] brightness-100 hover:brightness-95 focus:brightness-95
     }
 
     .modal-button-dark {
-        @apply w-full h-16 font-bold border-black border rounded-lg text-2xl uppercase mb-2 transition bg-black hover:bg-[#fafafa] hover:text-black focus:bg-black focus:text-white
+        @apply w-full h-16 font-bold border-black border rounded-lg text-2xl flex justify-center items-center uppercase mb-2 transition bg-[#0c0c0c] brightness-100 hover:brightness-125 focus:brightness-125
     }
 
     .controls-section {
@@ -36,11 +36,11 @@
     }
 
     .levelselectinput {
-        @apply border text-center text-4xl w-24 aspect-square p-3 text-black rounded-xl
+        @apply border text-center text-4xl w-24 aspect-square p-3 text-[#0c0c0c] rounded-xl
     }
 
     .levelselectinput-dark {
-        @apply border text-center text-4xl w-24 aspect-square p-3 bg-black text-[#fafafa] rounded-xl
+        @apply border text-center text-4xl w-24 aspect-square p-3 bg-[#0c0c0c] text-[#fafafa] rounded-xl
     }
 
     .app-title {
@@ -72,7 +72,7 @@
     }
 
     .game {
-        @apply w-screen h-screen flex justify-center items-center max-h-screen
+        @apply w-screen h-screen flex justify-center items-center max-h-screen bg-[#fafafa]
     }
 
     .game-dark {
@@ -92,7 +92,7 @@
     }
 
     .scores-container-dark {
-        @apply flex flex-col w-full items-center gap-3 px-10 py-7 border max-h-96 overflow-y-scroll bg-black xl:max-h-[500px]
+        @apply flex flex-col w-full items-center gap-3 px-10 py-7 border max-h-96 overflow-y-scroll bg-[#0c0c0c] xl:max-h-[500px]
     }
 
     .gametile {
@@ -148,7 +148,7 @@
     }
 
     .scoresubmissioninput-dark {
-        @apply w-full border rounded-md text-2xl text-center bg-black p-2 text-white
+        @apply w-full border rounded-md text-2xl text-center bg-[#0c0c0c] p-2 text-white
     }
 }
 @font-face {

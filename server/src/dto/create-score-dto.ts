@@ -2,10 +2,11 @@ import { IsNotEmpty, IsNumber, IsString, IsDate, MaxLength, MinLength } from 'cl
 
 const minimumNameLength = 0
 const maximumNameLength = 10
+
 export class CreateScoreDto {
     @IsString()
-    @MinLength(0)
-    @MaxLength(10)
+    @MinLength(minimumNameLength)
+    @MaxLength(maximumNameLength)
     @IsNotEmpty()
     readonly name: string;
 
@@ -20,7 +21,4 @@ export class CreateScoreDto {
     @IsNumber()
     @IsNotEmpty()
     readonly level: number;
-
-    @IsDate()
-    readonly date: Date;
 }

@@ -13,6 +13,6 @@ export class ScoreController {
 
     @Post()
     async createScore(@Body() createScoreDto: CreateScoreDto) {
-        return this.createScore(createScoreDto)
+        return this.scoreService.createScore(createScoreDto)
     }
 }

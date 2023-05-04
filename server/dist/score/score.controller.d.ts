@@ -4,5 +4,5 @@ export declare class ScoreController {
     private readonly scoreService;
     constructor(scoreService: ScoreService);
     getScores(): Promise<import("../interface/score.interface").IScore[]>;
-    createScore(createScoreDto: CreateScoreDto): any;
+    createScore(createScoreDto: CreateScoreDto): Promise<import("../interface/score.interface").IScore>;
 }

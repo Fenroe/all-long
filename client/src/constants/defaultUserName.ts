@@ -1,1 +1,1 @@
-export const defaultUserName = 'Tett'
+export const defaultUserName = ''

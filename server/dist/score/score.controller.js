@@ -24,7 +24,7 @@ let ScoreController = class ScoreController {
         return this.scoreService.getAllScores();
     }
     async createScore(createScoreDto) {
-        return this.createScore(createScoreDto);
+        return this.scoreService.createScore(createScoreDto);
     }
 };
 __decorate([

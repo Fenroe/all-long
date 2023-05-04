@@ -30,7 +30,7 @@ __decorate([
     __metadata("design:type", Number)
 ], Score.prototype, "level", void 0);
 __decorate([
-    (0, mongoose_1.Prop)(),
+    (0, mongoose_1.Prop)({ default: new Date() }),
     __metadata("design:type", Date)
 ], Score.prototype, "date", void 0);
 Score = __decorate([

@@ -18,6 +18,8 @@ import { openModalWithListener } from "./openModalWithListener";
 import { closeModalWithListener } from "./closeModalWithListener";
 import { startGame } from "./startGame";
 import { determineFallSpeed } from "./determineFallSpeed";
+import { getRemoteScores } from "./getRemoteScores";
+import { postNewScore } from "./postNewScore";
 
 export {
     getArrayFromNumber,
@@ -40,4 +42,6 @@ export {
     closeModalWithListener,
     startGame,
     determineFallSpeed,
+    getRemoteScores,
+    postNewScore,
 }

@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
+import { NodeWorker } from 'inspector';
 import { HydratedDocument } from 'mongoose'
 
 export type ScoreDocument = HydratedDocument<Score>
@@ -17,7 +18,7 @@ export class Score {
     @Prop()
     level: number;
     
-    @Prop()
+    @Prop({ default: new Date() })
     date: Date;
 }
 
