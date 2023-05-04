@@ -25,6 +25,7 @@ export const Home = () => {
 
   const changeTheme = () => {
     state.darkMode = !snap.darkMode
+    localStorage.setItem('theme', JSON.stringify(!snap.darkMode))
     clearFocus()
   }
 

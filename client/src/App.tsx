@@ -23,12 +23,13 @@ function App() {
   }
   useEffect(() => {
     const locallyStoredScores = localStorage.getItem(localStorageKeys.localScores)
-    if (locallyStoredScores) {
-      state.localScores = JSON.parse(locallyStoredScores)
+    state.localScores = locallyStoredScores ? JSON.parse(locallyStoredScores) : []
+    const locallySavedDarkMode = localStorage.getItem('theme')
+    if (locallySavedDarkMode) {
+      state.darkMode = JSON.parse(locallySavedDarkMode)
     } else {
-      state.localScores = []
+      state.darkMode = window.matchMedia('prefers-color-scheme: dark').matches
     }
-    
   }, [])
   return (
     <div className="container">

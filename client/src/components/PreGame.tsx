@@ -48,7 +48,7 @@ export const PreGame = () => {
                 <button className="text-6xl disabled:text-gray-400" disabled={level === maximumStartingLevel}>
                     <MdOutlineArrowDropUp className="text-6xl" onClick={increaseLevel}/>
                 </button>
-                <input onChange={(evt) => handleInputChange(evt)}className="border text-center text-4xl w-24 aspect-square p-3 text-black"value={returnInputValue()}/>
+                <input onChange={(evt) => handleInputChange(evt)}className={snap.darkMode ? "levelselectinput-dark":"levelselectinput"} value={returnInputValue()}/>
                 <button className="text-6xl disabled:text-gray-400" disabled={level === minimumStartingLevel}>
                     <MdOutlineArrowDropDown className="text-6xl" onClick={decreaseLevel}/>
                 </button>

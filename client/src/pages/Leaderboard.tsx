@@ -9,7 +9,7 @@ const pageViewValues = {
 }
 
 const sortingMethodValues = {
-    highestFirst: 'Highest to Lowest',
+    highestFirst: 'High Scores',
     recentFirst: 'Most Recent'
 }
 
@@ -34,15 +34,15 @@ export const Leaderboard = () => {
         <div className={snap.darkMode ? "leaderboard-dark": "leaderboard"}>
             <div className="container max-w-[900px]">
                 <div className="text-2xl w-full h-12 flex justify-evenly">
-                    <button className={pageView === pageViewValues.localScores ? 'font-bold': ''}onClick={() => setPageView(pageViewValues.localScores)}>My Scores</button>
-                    <button className={pageView === pageViewValues.leaderboard ? 'font-bold': ''}onClick={() => setPageView(pageViewValues.leaderboard)}>Leaderboard</button>
+                    <button className={pageView === pageViewValues.localScores ? 'font-bold': ''}onClick={() => setPageView(pageViewValues.localScores)}>{pageViewValues.localScores}</button>
+                    <button className={pageView === pageViewValues.leaderboard ? 'font-bold': ''}onClick={() => setPageView(pageViewValues.leaderboard)}>{pageViewValues.leaderboard}</button>
                 </div>
                 <div className="flex flex-col items-center gap-3">
                     <h1 className="text-3xl font-bold pt-6">{pageView}</h1>
                     {pageView === pageViewValues.localScores &&
                         <div className="text-xl py-3 mb-3 px-6 flex border w-full">
-                            <button className={sortingMethod === sortingMethodValues.recentFirst ? 'font-bold flex-1' : 'flex-1'} onClick={() => setSortingMethod(sortingMethodValues.recentFirst)}>Most Recent</button>
-                            <button className={sortingMethod === sortingMethodValues.highestFirst ? 'font-bold flex-1' : 'flex-1'} onClick={() => setSortingMethod(sortingMethodValues.highestFirst)}>Highest to Lowest</button>
+                            <button className={sortingMethod === sortingMethodValues.recentFirst ? 'font-bold flex-1' : 'flex-1'} onClick={() => setSortingMethod(sortingMethodValues.recentFirst)}>{sortingMethodValues.recentFirst}</button>
+                            <button className={sortingMethod === sortingMethodValues.highestFirst ? 'font-bold flex-1' : 'flex-1'} onClick={() => setSortingMethod(sortingMethodValues.highestFirst)}>{sortingMethodValues.highestFirst}</button>
                         </div>
                     }
 
